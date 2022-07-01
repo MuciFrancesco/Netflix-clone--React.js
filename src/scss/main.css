@@ -1,0 +1,366 @@
+.row {
+  margin-top: 1.5rem;
+}
+
+.row h2 {
+  color: white;
+  margin-left: 1.5rem;
+}
+
+.row .row-posters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+  width: 100%;
+}
+
+.row .row-posters::-webkit-scrollbar {
+  display: none;
+}
+
+.row .row-posters a {
+  color: white;
+  position: relative;
+  width: 100%;
+  max-height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-transition: -webkit-transform 450ms;
+  transition: -webkit-transform 450ms;
+  transition: transform 450ms;
+  transition: transform 450ms, -webkit-transform 450ms;
+}
+
+.row .row-posters a:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
+}
+
+.row .row-posters a h1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  z-index: 10;
+  bottom: 40px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 17px;
+}
+
+.row .row-posters a .row-bg {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #00000065;
+}
+
+.row .row-posters a .large-row-button {
+  width: 90%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: absolute;
+  top: 200px;
+}
+
+.row .row-posters a .large-row-button button {
+  z-index: 10;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+}
+
+.row .row-posters a .large-row-button button:hover {
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  background-color: rgba(255, 94, 94, 0.66);
+}
+
+.row .row-posters a .large-row-button button img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  width: 20px;
+  height: 20px;
+}
+
+.row .row-posters a .row-button {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  position: absolute;
+  top: 100px;
+}
+
+.row .row-posters a .row-button button {
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.5rem;
+  border: none;
+}
+
+.row .row-posters a .row-button button:hover {
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  background-color: rgba(255, 94, 94, 0.66);
+}
+
+.row .row-posters a .row-button button img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  width: 20px;
+  height: 20px;
+}
+
+.row .row-posters a .row-poster {
+  width: 250px;
+  height: 100%;
+  margin-left: 10px;
+}
+
+.row .row-posters a .row-posterLarge {
+  -o-object-fit: contain;
+     object-fit: contain;
+  width: 180px;
+  height: 100%;
+  margin-right: 15px;
+  margin-left: 0px !important;
+}
+
+.banner {
+  position: relative;
+  color: #fff;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 560px;
+}
+
+.banner .banner-contents {
+  z-index: 10;
+  position: relative;
+  margin-left: 30px;
+  padding-top: 152px;
+  height: 190px;
+}
+
+.banner .banner-contents .banner-title {
+  font-size: 3rem;
+  font-weight: 800;
+  padding-bottom: 0.8rem;
+}
+
+.banner .banner-contents .banner-buttons .banner-button {
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: rgba(51, 51, 51, 0.5);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 17px;
+}
+
+.banner .banner-contents .banner-buttons .banner-button:hover {
+  color: black;
+  background-color: #e6e6e6;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.banner .banner-contents .bunner-description {
+  font-weight: 600;
+  width: 45rem;
+  line-height: 1.3;
+  padding-top: 1rem;
+  font-size: 1.1rem;
+  max-width: 360px;
+  height: 80px;
+}
+
+.banner .banner-fade-button {
+  height: 66%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(rgba(37, 37, 37, 0.61)), to(#111));
+  background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);
+}
+
+.banner .banner-bg {
+  z-index: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0000002e;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+}
+
+.App {
+  background-color: #111;
+}
+
+.root {
+  background-color: #292929;
+}
+
+.nav {
+  background: #0000008a;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  z-index: 99;
+}
+
+.nav .nav-group-1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav .nav-group-1 .nav-logo {
+  width: 120px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.nav .nav-group-1 .nav-links {
+  margin-left: 1.2rem;
+}
+
+.nav .nav-group-1 .nav-links a {
+  font-weight: 500;
+  font-size: 17px;
+  margin-left: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+.nav .nav-group-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.nav .nav-group-2 .search-button {
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding-right: 2rem;
+}
+
+.nav .nav-group-2 .search-button img {
+  width: 30px;
+}
+
+.nav .nav-group-2 .login-button {
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: rgba(51, 51, 51, 0.5);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 15px;
+}
+
+.nav .nav-group-2 .login-button:hover {
+  color: black;
+  background-color: #e6e6e6;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+/*# sourceMappingURL=main.css.map */
