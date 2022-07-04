@@ -1,32 +1,40 @@
 import React, { useEffect, useState } from "react";
-import requests from "../reguests";
-import axios from "../axios";
-const base_url = "https://image.tmdb.org/t/p/original/";
+import apiConfig from "../API/reguests";
+import tmdbApi, { movieType } from "../API/tmdbApi";
 
 function Banner() {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
     (async function fetchData() {
-      const request = await axios.get(requests.fetchComedyMovie);
-      setMovie(
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
-        ]
-      );
-      return request;
+      const params = { page: 1 };
+      try {
+        const response = await tmdbApi.getMovieList(movieType.popular, {
+          params,
+        });
+        setMovie(
+          response.results[
+            Math.floor(Math.random() * response.results.length - 1)
+          ]
+        );
+      } catch (error) {
+        console.log(error);
+      }
     })();
   }, []);
 
   const truncate = (str, n) => {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   };
+
   return (
     <header
       className="banner"
       style={{
         backgroundSize: "cover",
-        backgroundImage: `url( ${base_url}${movie?.backdrop_path})`,
+        backgroundImage: `url(${apiConfig.originalImage(
+          movie?.backdrop_path
+        )})`,
         backgroundPosition: "center center",
       }}
     >

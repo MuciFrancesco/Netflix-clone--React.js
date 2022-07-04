@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Nav from "./components/Nav";
-import HomeScreen from "./pages/HomeScreen";
+import Nav from "../components/Nav";
+import HomeScreen from "../pages/HomeScreen";
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <BrowserRouter>
         <Nav />
         <Routes>
-          <Route path="/" element={<HomeScreen />} />
+          <Route path="/" element={<HomeScreen />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
