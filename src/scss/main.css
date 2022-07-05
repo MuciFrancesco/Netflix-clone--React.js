@@ -21,9 +21,14 @@
   display: none;
 }
 
-.row .row-posters a {
-  color: white;
+.row .row-posters .row-poster-div {
   position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.row .row-posters .row-poster-div a {
+  color: white;
   width: 100%;
   max-height: 100%;
   -o-object-fit: contain;
@@ -34,12 +39,12 @@
   transition: transform 450ms, -webkit-transform 450ms;
 }
 
-.row .row-posters a:hover {
+.row .row-posters .row-poster-div a:hover {
   -webkit-transform: scale(1.08);
           transform: scale(1.08);
 }
 
-.row .row-posters a h1 {
+.row .row-posters .row-poster-div a h1 {
   padding-left: 1rem;
   padding-right: 1rem;
   z-index: 10;
@@ -60,7 +65,7 @@
   font-size: 17px;
 }
 
-.row .row-posters a .row-bg {
+.row .row-posters .row-poster-div a .row-bg {
   z-index: 0;
   position: absolute;
   top: 0;
@@ -70,7 +75,7 @@
   background: #00000065;
 }
 
-.row .row-posters a .large-row-button {
+.row .row-posters .row-poster-div a .large-row-button {
   width: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -84,7 +89,7 @@
   top: 200px;
 }
 
-.row .row-posters a .large-row-button button {
+.row .row-posters .row-poster-div a .large-row-button button {
   z-index: 10;
   border-radius: 50%;
   display: -webkit-box;
@@ -101,13 +106,13 @@
   cursor: pointer;
 }
 
-.row .row-posters a .large-row-button button:hover {
+.row .row-posters .row-poster-div a .large-row-button button:hover {
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
   background-color: rgba(255, 94, 94, 0.66);
 }
 
-.row .row-posters a .large-row-button button img {
+.row .row-posters .row-poster-div a .large-row-button button img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -119,7 +124,7 @@
   height: 20px;
 }
 
-.row .row-posters a .row-button {
+.row .row-posters .row-poster-div a .row-button {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -133,7 +138,7 @@
   top: 100px;
 }
 
-.row .row-posters a .row-button button {
+.row .row-posters .row-poster-div a .row-button button {
   border-radius: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -148,13 +153,13 @@
   border: none;
 }
 
-.row .row-posters a .row-button button:hover {
+.row .row-posters .row-poster-div a .row-button button:hover {
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
   background-color: rgba(255, 94, 94, 0.66);
 }
 
-.row .row-posters a .row-button button img {
+.row .row-posters .row-poster-div a .row-button button img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -166,19 +171,135 @@
   height: 20px;
 }
 
-.row .row-posters a .row-poster {
+.row .row-posters .row-poster-div a .row-poster {
   width: 250px;
   height: 100%;
   margin-left: 10px;
 }
 
-.row .row-posters a .row-posterLarge {
+.row .row-posters .row-poster-div a .row-posterLarge {
   -o-object-fit: contain;
      object-fit: contain;
   width: 180px;
   height: 100%;
   margin-right: 15px;
   margin-left: 0px !important;
+}
+
+.row-details {
+  width: 100%;
+  height: 100%;
+  z-index: 99;
+  border-radius: 10px;
+}
+
+.details {
+  z-index: 99;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+  background-color: #222;
+}
+
+.details .details-img {
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+
+.details .details-img img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.details .details-info {
+  position: relative;
+  top: 50px;
+  gap: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.details .details-info .details-title {
+  padding: 1rem 2rem;
+}
+
+.details .details-info .details-title h1 {
+  color: white;
+}
+
+.details .details-info .details-release {
+  color: white;
+  padding-left: 2rem;
+  padding-right: 7rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+}
+
+.details .details-info .details-release h2 {
+  margin: 0;
+  padding: 0;
+}
+
+.details .details-info .details-release .details-overview {
+  font-size: 18px;
+}
+
+.details .details-info .details-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.details .details-info .details-button button {
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: #333333;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 17px;
+}
+
+.details .details-info .details-button button:hover {
+  color: black;
+  background-color: #e6e6e6;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
 .banner {

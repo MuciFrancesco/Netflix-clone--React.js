@@ -23,4 +23,8 @@ axiosClient.interceptors.response.use(
   }
 );
 
-export default axiosClient;
+const instance = axios.create({
+  baseURL: "https://api.themoviedb.org/3",
+});
+
+export { axiosClient, instance };
