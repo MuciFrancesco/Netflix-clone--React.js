@@ -4,7 +4,6 @@ import apiConfig from "../API/reguests";
 import tmdbApi, { category, movieType } from "../API/tmdbApi";
 import RowHover from "./RowHover";
 import Details from "./Details";
-import { Link } from "react-router-dom";
 function Row({ title, urlLink, isLargeRow, cart, addToFavorite }) {
   const [movie, setMovie] = useState([]);
 

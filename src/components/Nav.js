@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import netflix from "../assets/netflix-logo.svg";
 import search from "../assets/search-nav.svg";
 import close from "../assets/close.svg";
-import apiConfig from "../API/reguests";
-const searchMovieUrl = `${apiConfig.baseUrl}/discover/movie?sort_by=popularity.desc&api_key=${apiConfig.APIKEY}`;
+
 function Nav() {
   const [showSearch, setShowSearch] = useState(false);
   const [movies, setMovies] = useState([]);

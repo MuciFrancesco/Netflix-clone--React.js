@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import apiConfig from "../API/reguests";
-import tmdbApi, { category, movieType, requests } from "../API/tmdbApi";
+import tmdbApi, { category, movieType } from "../API/tmdbApi";
 
 function Banner({ cart, addToFavorite }) {
   const [movie, setMovie] = useState([]);

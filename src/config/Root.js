@@ -1,6 +1,5 @@
 import { useCallback, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Details from "../components/Details";
 import Nav from "../components/Nav";
 import HomeScreen from "../pages/HomeScreen";
 import MyList from "../pages/MyList";
