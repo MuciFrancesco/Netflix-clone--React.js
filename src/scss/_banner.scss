@@ -61,3 +61,32 @@
         background: #0000002e;
     }
 }
+
+.banner-close-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -55px;
+    .banner-close-trailer-btn{
+        cursor: pointer;
+        color:white;
+        outline:none;
+        border: none;
+        font-weight: 700;
+        border-radius: 0.2vw;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        background-color: rgb(51, 51, 51);
+        box-sizing: border-box;
+        font-size: 17px;
+        &:hover{
+            color: black;
+            background-color: #e6e6e6;
+            transition: all 0.2s;
+        }
+    }
+}

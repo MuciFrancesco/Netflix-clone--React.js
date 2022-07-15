@@ -1,37 +1,37 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import apiConfig from "../API/reguests";
-import tmdbApi, { category, movieType, requests } from "../API/tmdbApi";
+import tmdbApi, { category, movieType } from "../API/tmdbApi";
 import RowHover from "./RowHover";
 import Details from "./Details";
 import { Link } from "react-router-dom";
-import ReactPlayer from "react-player";
-
-function Row({ title, urlLink, isLargeRow }) {
+function Row({ title, urlLink, isLargeRow, cart, addToFavorite }) {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
-    (async function fetchData() {
-      let response = null;
-      if (urlLink === "popular") {
-        response = await tmdbApi.getMovieList(movieType.popular, {
-          params: {},
-        });
-      } else if (urlLink === "topRated") {
-        response = await tmdbApi.getMovieList(movieType.top_rated, {
-          params: {},
-        });
-      } else if (urlLink === "upComing") {
-        response = await tmdbApi.getMovieList(movieType.upcoming, {
-          params: {},
-        });
-      } else {
-        const request = await axios.get(urlLink);
-        setMovie(request.data.results);
-        return request;
-      }
-      setMovie(response.results);
-    })();
+    if (urlLink) {
+      (async function fetchData() {
+        let response = null;
+        if (urlLink === "popular") {
+          response = await tmdbApi.getMovieList(movieType.popular, {
+            params: {},
+          });
+        } else if (urlLink === "topRated") {
+          response = await tmdbApi.getMovieList(movieType.top_rated, {
+            params: {},
+          });
+        } else if (urlLink === "upComing") {
+          response = await tmdbApi.getMovieList(movieType.upcoming, {
+            params: {},
+          });
+        } else {
+          const request = await axios.get(urlLink);
+          setMovie(request.data.results);
+          return request;
+        }
+        setMovie(response.results);
+      })();
+    }
   }, [urlLink]);
 
   const [isHovering, SetIsOvering] = useState(-1);
@@ -67,11 +67,13 @@ function Row({ title, urlLink, isLargeRow }) {
 
   return (
     <div className="row">
+      <div className="bg"></div>
       <h2>{title}</h2>
+
       <div className="row-posters">
         {movie.map((movie, i) => (
           <>
-            <div className="row-poster-div">
+            <div className="row-poster-div" key={i}>
               <a
                 onMouseOver={() => handleMouseOver(i)}
                 onMouseOut={() => handleMouseOut()}
@@ -87,8 +89,8 @@ function Row({ title, urlLink, isLargeRow }) {
                       handleClick={handleClick}
                       isLargeRow={isLargeRow}
                       moreInfo={moreInfo}
-                      showTrailer={showTrailer}
-                      SetShowTrailer={SetShowTrailer}
+                      addToFavorite={addToFavorite}
+                      cart={cart}
                     />
                   </>
                 ) : null}
@@ -110,19 +112,10 @@ function Row({ title, urlLink, isLargeRow }) {
                 <Details
                   handleCloseDetails={handleCloseDetails}
                   movie={movie}
+                  trailer={trailer}
+                  i={i}
+                  showTrailer={showTrailer}
                 />
-              ) : null}
-            </div>
-            <div className="prova">
-              {trailer === i ? (
-                <div>
-                  <ReactPlayer
-                    key={i}
-                    playing={true}
-                    controls={true}
-                    url={`https://www.youtube.com/watch?v=${showTrailer}`}
-                  />
-                </div>
               ) : null}
             </div>
           </>

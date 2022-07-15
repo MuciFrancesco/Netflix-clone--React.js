@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import ReactPlayer from "react-player";
 import apiConfig from "../API/reguests";
-import tmdbApi, { movieType } from "../API/tmdbApi";
+import tmdbApi, { category, movieType, requests } from "../API/tmdbApi";
 
-function Banner() {
+function Banner({ cart, addToFavorite }) {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
@@ -27,6 +28,17 @@ function Banner() {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   };
 
+  const [showTrailer, SetShowTrailer] = useState("");
+  const [trailer, setTrailer] = useState(false);
+
+  const handlePlayTrailer = async () => {
+    const request = await tmdbApi.getVideos(category.movie, movie.id);
+    const response = request.results.slice(0, 1).map((el) => el.key);
+    SetShowTrailer(response);
+    setTrailer(true);
+    console.log(showTrailer);
+  };
+
   return (
     <header
       className="banner"
@@ -38,18 +50,51 @@ function Banner() {
         backgroundPosition: "center center",
       }}
     >
-      <div className="banner-contents">
-        <h1 className="banner-title">
-          {movie?.title || movie?.name || movie?.original_name}
-        </h1>
-        <div className="banner-buttons">
-          <button className="banner-button">Play</button>
-          <button className="banner-button">My List</button>
-        </div>
-        <h1 className="bunner-description">{truncate(movie?.overview, 150)}</h1>
-      </div>
-      <div className="banner-fade-button" />
-      <div className="banner-bg" />
+      {!trailer ? (
+        <>
+          {" "}
+          <div className="banner-contents">
+            <h1 className="banner-title">
+              {movie?.title || movie?.name || movie?.original_name}
+            </h1>
+            <div className="banner-buttons">
+              <button className="banner-button" onClick={handlePlayTrailer}>
+                Play
+              </button>
+              <button
+                className="banner-button"
+                onClick={() => addToFavorite(movie)}
+              >
+                {cart.find((movies) => movies.id === movie.id)
+                  ? "Already on the list"
+                  : "Add into My List"}
+              </button>
+            </div>
+            <h1 className="bunner-description">
+              {truncate(movie?.overview, 150)}
+            </h1>
+          </div>
+          <div className="banner-fade-button" />
+          <div className="banner-bg" />
+        </>
+      ) : (
+        <>
+          <ReactPlayer
+            width={"100vw"}
+            height={"100%"}
+            playing={true}
+            url={`https://www.youtube.com/watch?v=${showTrailer}`}
+          />
+          <div className="banner-close-btn">
+            <button
+              onClick={() => setTrailer(false)}
+              className="banner-close-trailer-btn"
+            >
+              Close
+            </button>
+          </div>
+        </>
+      )}
     </header>
   );
 }

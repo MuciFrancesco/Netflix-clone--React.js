@@ -12,21 +12,29 @@
         width: 100%;
 
         &::-webkit-scrollbar{
-            display: none;
+            background: black;
+            height: 10px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgb(169, 169, 172);   
+            border-radius: 20px;       
+            border: 3px solid rgb(69, 69, 69);  
         }
         .row-poster-div{
             position: relative;
             width: 100%;
             height: 100%;
+            transition: transform 450ms;
+            margin-left: 10px;
+            border-radius: 20px;
+            &:hover{
+                transform:  scale(1.08);
+            }
             a{
                 color: white;
                 width: 100%;
                 max-height: 100%;
                 object-fit: contain;
-                transition: transform 450ms;
-                &:hover{
-                    transform:  scale(1.08);
-                }
                 h1{
                     padding-left: 1rem;
                     padding-right: 1rem;
@@ -44,11 +52,13 @@
                 .row-bg{
                     z-index: 0;
                     position: absolute;
-                    top: 0;
-                    left: 0;
                     width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
                     height: 100%;
                     background: #00000065;
+                    border-radius: 10px;
                 }
                 .large-row-button{
                     width: 90%;
@@ -67,8 +77,9 @@
                         border: none;
                         cursor: pointer;
                         &:hover{
-                            transition: 0.2s all;
+                            border-radius: 5px;
                             background-color: rgba(255, 94, 94, 0.66);
+                            transition: 0.2s cubic-bezier(0.25, 0.1, 0.99, 0.97);
                         }
                         img{
                             display: flex;
@@ -95,8 +106,9 @@
                             padding: 0.5rem;
                             border: none;
                             &:hover{
-                                transition: 0.2s all;
+                                border-radius: 5px;
                                 background-color: rgba(255, 94, 94, 0.66);
+                                transition: 0.2s cubic-bezier(0.25, 0.1, 0.99, 0.97);
                             }
                             img{
                                 display: flex;
@@ -111,14 +123,15 @@
                 .row-poster{
                     width: 250px;
                     height: 100%;
-                    margin-left: 10px;
+                    border-radius: 5px;
+                   
                 }
                 .row-posterLarge{
                     object-fit: contain;
                     width: 180px;
-                    height: 100%;
-                    margin-right: 15px;
+                    height: 100%;     
                     margin-left: 0px !important;
+                    border-radius: 20px;
                 }
             }
         }
@@ -150,7 +163,6 @@ border-radius: 10px;
         img{
             width: 100%;
             height: 100%;
-            object-fit: cover;
         }
     }
     .details-info{
@@ -214,3 +226,44 @@ border-radius: 10px;
 
 
 }
+
+
+
+.row-trailer{
+    width: 97.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222;
+}
+
+.primary-btn{
+    &:hover::after{
+        content: " More info";
+        padding-left: 0.2rem;
+        font-size: 14px;
+        font-weight: 700;
+    }
+}
+
+.secondary-btn{
+    &:hover::after{
+        content: " Add to List";
+        padding-left: 0.2rem;
+        font-size: 14px;
+        font-weight: 700;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

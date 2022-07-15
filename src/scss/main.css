@@ -18,13 +18,31 @@
 }
 
 .row .row-posters::-webkit-scrollbar {
-  display: none;
+  background: black;
+  height: 10px;
+}
+
+.row .row-posters::-webkit-scrollbar-thumb {
+  background-color: #a9a9ac;
+  border-radius: 20px;
+  border: 3px solid #454545;
 }
 
 .row .row-posters .row-poster-div {
   position: relative;
   width: 100%;
   height: 100%;
+  -webkit-transition: -webkit-transform 450ms;
+  transition: -webkit-transform 450ms;
+  transition: transform 450ms;
+  transition: transform 450ms, -webkit-transform 450ms;
+  margin-left: 10px;
+  border-radius: 20px;
+}
+
+.row .row-posters .row-poster-div:hover {
+  -webkit-transform: scale(1.08);
+          transform: scale(1.08);
 }
 
 .row .row-posters .row-poster-div a {
@@ -33,15 +51,6 @@
   max-height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  -webkit-transition: -webkit-transform 450ms;
-  transition: -webkit-transform 450ms;
-  transition: transform 450ms;
-  transition: transform 450ms, -webkit-transform 450ms;
-}
-
-.row .row-posters .row-poster-div a:hover {
-  -webkit-transform: scale(1.08);
-          transform: scale(1.08);
 }
 
 .row .row-posters .row-poster-div a h1 {
@@ -68,11 +77,19 @@
 .row .row-posters .row-poster-div a .row-bg {
   z-index: 0;
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   height: 100%;
   background: #00000065;
+  border-radius: 10px;
 }
 
 .row .row-posters .row-poster-div a .large-row-button {
@@ -107,9 +124,10 @@
 }
 
 .row .row-posters .row-poster-div a .large-row-button button:hover {
-  -webkit-transition: 0.2s all;
-  transition: 0.2s all;
+  border-radius: 5px;
   background-color: rgba(255, 94, 94, 0.66);
+  -webkit-transition: 0.2s cubic-bezier(0.25, 0.1, 0.99, 0.97);
+  transition: 0.2s cubic-bezier(0.25, 0.1, 0.99, 0.97);
 }
 
 .row .row-posters .row-poster-div a .large-row-button button img {
@@ -154,9 +172,10 @@
 }
 
 .row .row-posters .row-poster-div a .row-button button:hover {
-  -webkit-transition: 0.2s all;
-  transition: 0.2s all;
+  border-radius: 5px;
   background-color: rgba(255, 94, 94, 0.66);
+  -webkit-transition: 0.2s cubic-bezier(0.25, 0.1, 0.99, 0.97);
+  transition: 0.2s cubic-bezier(0.25, 0.1, 0.99, 0.97);
 }
 
 .row .row-posters .row-poster-div a .row-button button img {
@@ -174,7 +193,7 @@
 .row .row-posters .row-poster-div a .row-poster {
   width: 250px;
   height: 100%;
-  margin-left: 10px;
+  border-radius: 5px;
 }
 
 .row .row-posters .row-poster-div a .row-posterLarge {
@@ -182,8 +201,8 @@
      object-fit: contain;
   width: 180px;
   height: 100%;
-  margin-right: 15px;
   margin-left: 0px !important;
+  border-radius: 20px;
 }
 
 .row-details {
@@ -216,8 +235,6 @@
 .details .details-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 
 .details .details-info {
@@ -302,6 +319,34 @@
   transition: all 0.2s;
 }
 
+.row-trailer {
+  width: 97.5%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #222;
+}
+
+.primary-btn:hover::after {
+  content: " More info";
+  padding-left: 0.2rem;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.secondary-btn:hover::after {
+  content: " Add to List";
+  padding-left: 0.2rem;
+  font-size: 14px;
+  font-weight: 700;
+}
+
 .banner {
   position: relative;
   color: #fff;
@@ -373,6 +418,45 @@
   width: 100%;
   height: 100%;
   background: #0000002e;
+}
+
+.banner-close-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  top: -55px;
+}
+
+.banner-close-btn .banner-close-trailer-btn {
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: #333333;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 17px;
+}
+
+.banner-close-btn .banner-close-trailer-btn:hover {
+  color: black;
+  background-color: #e6e6e6;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
 * {

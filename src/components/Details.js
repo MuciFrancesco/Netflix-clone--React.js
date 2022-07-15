@@ -1,7 +1,8 @@
 import React from "react";
 import apiConfig from "../API/reguests";
+import ReactPlayer from "react-player";
 
-function Details({ movie, handleCloseDetails, prova }) {
+function Details({ movie, handleCloseDetails, trailer, i, showTrailer }) {
   return (
     <div className="details">
       <div className="details-img">
@@ -27,6 +28,16 @@ function Details({ movie, handleCloseDetails, prova }) {
           </p>
           <h3>Vote: {movie?.vote_average || "Movie vote not available"}</h3>
         </div>
+        {trailer === i ? (
+          <div className="row-trailer">
+            <ReactPlayer
+              key={i}
+              playing={true}
+              controls={true}
+              url={`https://www.youtube.com/watch?v=${showTrailer}`}
+            />
+          </div>
+        ) : null}
         <div className="details-button">
           <button onClick={() => handleCloseDetails()}>Close info</button>
         </div>
