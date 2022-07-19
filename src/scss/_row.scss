@@ -199,6 +199,7 @@ border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
             button{
                 cursor: pointer;
                 color:white;
@@ -218,6 +219,11 @@ border-radius: 10px;
                     color: black;
                     background-color: #e6e6e6;
                     transition: all 0.2s;
+                }
+                img{
+                    width: 20px;
+                    height: 20px;
+                    fill: white !important;
                 }
             }
         }

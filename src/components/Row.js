@@ -4,8 +4,35 @@ import apiConfig from "../API/reguests";
 import tmdbApi, { category, movieType } from "../API/tmdbApi";
 import RowHover from "./RowHover";
 import Details from "./Details";
-function Row({ title, urlLink, isLargeRow, cart, addToFavorite }) {
+//swich case useeffect ...chiamare prima !if...
+function Row({
+  title,
+  urlLink,
+  isLargeRow,
+  cart,
+  addToFavorite,
+  trailer,
+  selectedTrailer,
+  prova,
+  showTrailer,
+  removeToFavorite,
+}) {
   const [movie, setMovie] = useState([]);
+
+  const [isHovering, SetIsOvering] = useState(-1);
+
+  const handleMouseOver = useCallback((i) => SetIsOvering(i), []);
+  const handleMouseOut = useCallback(() => SetIsOvering(-1), []);
+  const [moreInfo, setMoreInfo] = useState(-1);
+  const handleClick = useCallback((i) => {
+    setMoreInfo(i);
+    window.scroll(0, 0);
+    document.body.style.overflow = "hidden";
+  }, []);
+  const handleCloseDetails = useCallback(() => {
+    setMoreInfo(-1);
+    document.body.style.overflow = "auto";
+  }, []);
 
   useEffect(() => {
     if (urlLink) {
@@ -33,37 +60,6 @@ function Row({ title, urlLink, isLargeRow, cart, addToFavorite }) {
     }
   }, [urlLink]);
 
-  const [isHovering, SetIsOvering] = useState(-1);
-
-  const handleMouseOver = useCallback((i) => SetIsOvering(i), []);
-  const handleMouseOut = useCallback(() => SetIsOvering(-1), []);
-
-  const [moreInfo, setMoreInfo] = useState(-1);
-
-  const handleClick = useCallback((i) => {
-    setMoreInfo(i);
-    window.scroll(0, 0);
-    document.body.style.overflow = "hidden";
-  }, []);
-
-  const handleCloseDetails = useCallback(() => {
-    setMoreInfo(-1);
-    document.body.style.overflow = "auto";
-  }, []);
-
-  const [trailer, setTrailer] = useState(-1);
-
-  const selectedTrailer = useCallback((i) => setTrailer(i), []);
-
-  const [showTrailer, SetShowTrailer] = useState("");
-
-  const prova = async (movieId) => {
-    const pr = await tmdbApi.getVideos(category.movie, movieId);
-    const prova = pr.results.slice(0, 1).map((el) => el.key);
-    SetShowTrailer(prova);
-    console.log(showTrailer);
-  };
-
   return (
     <div className="row">
       <div className="bg"></div>
@@ -90,6 +86,7 @@ function Row({ title, urlLink, isLargeRow, cart, addToFavorite }) {
                       moreInfo={moreInfo}
                       addToFavorite={addToFavorite}
                       cart={cart}
+                      removeToFavorite={removeToFavorite}
                     />
                   </>
                 ) : null}
@@ -114,6 +111,9 @@ function Row({ title, urlLink, isLargeRow, cart, addToFavorite }) {
                   trailer={trailer}
                   i={i}
                   showTrailer={showTrailer}
+                  cart={cart}
+                  addToFavorite={addToFavorite}
+                  removeToFavorite={removeToFavorite}
                 />
               ) : null}
             </div>

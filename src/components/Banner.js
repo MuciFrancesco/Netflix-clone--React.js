@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 import apiConfig from "../API/reguests";
 import tmdbApi, { category, movieType } from "../API/tmdbApi";
 
-function Banner({ cart, addToFavorite }) {
+function Banner({ cart, addToFavorite, removeToFavorite }) {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
@@ -63,7 +63,11 @@ function Banner({ cart, addToFavorite }) {
               </button>
               <button
                 className="banner-button"
-                onClick={() => addToFavorite(movie)}
+                onClick={
+                  cart.find((movies) => movies.id === movie.id)
+                    ? () => removeToFavorite(movie)
+                    : () => addToFavorite(movie)
+                }
               >
                 {cart.find((movies) => movies.id === movie.id)
                   ? "Already on the list"

@@ -1,8 +1,19 @@
 import React from "react";
 import apiConfig from "../API/reguests";
 import ReactPlayer from "react-player";
+import addToList from "../assets/add-to-list-row-red.svg";
+import check from "../assets/check.svg";
 
-function Details({ movie, handleCloseDetails, trailer, i, showTrailer }) {
+function Details({
+  movie,
+  handleCloseDetails,
+  trailer,
+  i,
+  showTrailer,
+  addToFavorite,
+  cart,
+  removeToFavorite,
+}) {
   return (
     <div className="details">
       <div className="details-img">
@@ -39,6 +50,19 @@ function Details({ movie, handleCloseDetails, trailer, i, showTrailer }) {
           </div>
         ) : null}
         <div className="details-button">
+          <button
+            onClick={
+              cart.find((movies) => movies.id === movie.id)
+                ? () => removeToFavorite(movie)
+                : () => addToFavorite(movie)
+            }
+          >
+            {cart.find((movies) => movies.id === movie.id) ? (
+              <img src={check} alt="Already on the list" />
+            ) : (
+              <p>Add to List</p>
+            )}
+          </button>
           <button onClick={() => handleCloseDetails()}>Close info</button>
         </div>
       </div>

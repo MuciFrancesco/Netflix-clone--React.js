@@ -12,6 +12,7 @@ function RowHover({
   prova,
   addToFavorite,
   cart,
+  removeToFavorite,
 }) {
   return (
     <>
@@ -34,7 +35,11 @@ function RowHover({
               ? null
               : "secondary-btn"
           }
-          onClick={() => addToFavorite(movie)}
+          onClick={
+            cart.find((movies) => movies.id === movie.id)
+              ? () => removeToFavorite(movie)
+              : () => addToFavorite(movie)
+          }
         >
           {cart.find((movies) => movies.id === movie.id) ? (
             <img src={check} alt="Already on the list" />

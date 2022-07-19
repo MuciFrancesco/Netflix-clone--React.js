@@ -292,6 +292,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
 }
 
 .details .details-info .details-button button {
@@ -317,6 +318,12 @@
   background-color: #e6e6e6;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
+}
+
+.details .details-info .details-button button img {
+  width: 20px;
+  height: 20px;
+  fill: white !important;
 }
 
 .row-trailer {
@@ -530,6 +537,12 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  gap: 1rem;
+}
+
+.nav .nav-group-2 input {
+  width: 200px;
+  height: 22px;
 }
 
 .nav .nav-group-2 .search-button {
@@ -540,8 +553,12 @@
   padding-right: 2rem;
 }
 
-.nav .nav-group-2 .search-button img {
+.nav .nav-group-2 .search-button .search {
   width: 30px;
+}
+
+.nav .nav-group-2 .search-button .close {
+  width: 20px;
 }
 
 .nav .nav-group-2 .login-button {
@@ -567,5 +584,237 @@
   background-color: #e6e6e6;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
+}
+
+.my-list-container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding-bottom: 5rem;
+  padding-top: 2rem;
+}
+
+.my-list-container .my-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 0rem;
+  padding-top: 4rem;
+  padding-left: 2rem;
+  padding-right: 15rem;
+  color: white;
+}
+
+.my-list-container .my-list .my-list-img {
+  width: 30%;
+}
+
+.my-list-container .my-list .my-list-img img {
+  width: 250px;
+}
+
+.my-list-container .my-list .my-list-description {
+  width: 70%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5rem;
+}
+
+.my-list-container .my-list .my-list-description p {
+  font-size: 16.5px;
+}
+
+.my-list-container .my-list .my-list-description .detail {
+  font-weight: 600;
+}
+
+.my-list-container .my-list .my-list-description button {
+  width: 200px;
+  cursor: pointer;
+  color: white;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 0.2vw;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: #404040;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 17px;
+}
+
+.my-list-container .my-list .my-list-description button:hover {
+  color: black;
+  background-color: #e6e6e6;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.video-btn-list {
+  width: 100% !important;
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -webkit-box-align: center !important;
+      -ms-flex-align: center !important;
+          align-items: center !important;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+  position: absolute !important;
+  top: 997px !important;
+  left: 0 !important;
+  z-index: 99 !important;
+}
+
+.alert-list {
+  font-size: 50px;
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.search-bar-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: white;
+  padding-top: 120px;
+  padding-bottom: 80px;
+  gap: 1rem;
+  background-color: #000000e0 !important;
+  position: absolute;
+  z-index: 97;
+  width: 100%;
+  height: 100%;
+}
+
+.search-bar-container .search-bar-movies {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.search-bar-container .search-bar-movies .movies-content {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.search-bar-container .search-bar-movies .movies-content a {
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+footer {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: #111111;
+}
+
+footer img {
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+footer .footer-info {
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.2rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+footer .footer-info p {
+  font-size: 18px;
+}
+
+footer .footer-info .footer-contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1.5rem;
+}
+
+footer .footer-info .footer-contact a {
+  color: white;
+  text-decoration: underline;
+  font-size: 17px;
 }
 /*# sourceMappingURL=main.css.map */

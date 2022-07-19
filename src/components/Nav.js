@@ -1,37 +1,61 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Link } from "react-router-dom";
 import netflix from "../assets/netflix-logo.svg";
 import search from "../assets/search-nav.svg";
 import close from "../assets/close.svg";
+import SearchBar from "./SearchBar";
+import Details from "./Details";
 
-function Nav() {
+function Nav({
+  handleCloseDetails,
+  handleClick,
+  moreInfo,
+  trailer,
+  showTrailer,
+  prova,
+  selectedTrailer,
+  cart,
+  addToFavorite,
+  removeToFavorite,
+}) {
   const [showSearch, setShowSearch] = useState(false);
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
 
-  const searchMovie = async (e) => {
-    e.preventDefault();
-    console.log("Searching");
-    try {
-      const url = `https://api.themoviedb.org/3/search/movie?api_key=bcc4ff10c2939665232d75d8bf0ec093&query=${query}`;
-      const res = await fetch(url);
-      const data = await res.json();
-      setMovies(data.results);
-      console.log(movies);
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  const changeHandler = (e) => {
+  const searchMovie = useCallback(
+    async (e) => {
+      e.preventDefault();
+      console.log("Searching");
+      try {
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=bcc4ff10c2939665232d75d8bf0ec093&query=${query}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        setMovies(data?.results);
+        console.log(movies);
+      } catch (e) {
+        console.log(e);
+      }
+    },
+    [query, movies]
+  );
+  const changeHandler = useCallback((e) => {
     setQuery(e.target.value);
-  };
+  }, []);
 
-  const handleShowSearch = () => {
+  const clearInput = useCallback(() => {
+    setQuery("");
+    setMovies([]);
+  }, []);
+
+  const handleShowSearch = useCallback(() => {
     setShowSearch(true);
-  };
-  const handleHideSearch = () => {
+    window.scroll(0, 0);
+    document.body.style.overflow = "hidden";
+  }, []);
+  const handleHideSearch = useCallback(() => {
     setShowSearch(false);
-  };
+    document.body.style.overflow = "auto";
+  }, []);
 
   return (
     <>
@@ -47,36 +71,54 @@ function Nav() {
         </div>
         <div className="nav-group-2">
           {showSearch ? (
-            <form
+            <input
               autoComplete="off"
-              onSubmit={
-                searchMovie /*sistemare onsubmit se e vuoto o direttamente al value change del input  */
-              }
-            >
-              <input
-                type="text"
-                name="query"
-                value={query}
-                onChange={changeHandler}
-                placeholder="Search..."
-              />
-            </form>
+              type="text"
+              name="query"
+              value={query}
+              onChange={(e) => {
+                changeHandler(e);
+                searchMovie(e);
+              }}
+              placeholder="Search..."
+            />
           ) : null}
           <button
-            onClick={!showSearch ? handleShowSearch : handleHideSearch}
+            onClick={
+              !showSearch
+                ? handleShowSearch
+                : () => {
+                    clearInput();
+                    handleHideSearch();
+                  }
+            }
             className="search-button"
           >
-            <img src={showSearch ? close : search} alt="search-bar" />
+            <img
+              className={showSearch ? "close" : "search"}
+              src={showSearch ? close : search}
+              alt="search-bar"
+            />
           </button>
           <button className="login-button">Login</button>
         </div>
       </div>
-      {movies.length > 0 ? (
-        <div className="container">
-          {movies.map((el) => {
-            return <div>{el.title}</div>;
-          })}
-        </div>
+      {showSearch === true ? (
+        <SearchBar
+          handleHideSearch={handleHideSearch}
+          handleOpenDetail={handleClick}
+          query={query}
+          movies={movies}
+          handleCloseDetails={handleCloseDetails}
+          openDetails={moreInfo}
+          trailer={trailer}
+          showTrailer={showTrailer}
+          prova={prova}
+          selectedTrailer={selectedTrailer}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          removeToFavorite={removeToFavorite}
+        />
       ) : null}
     </>
   );
