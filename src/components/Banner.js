@@ -4,7 +4,7 @@ import apiConfig from "../API/reguests";
 import tmdbApi, { category, movieType } from "../API/tmdbApi";
 
 function Banner({ cart, addToFavorite, removeToFavorite }) {
-  const [movie, setMovie] = useState();
+  const [movie, setMovie] = useState([]);
 
   useEffect(() => {
     (async function fetchData() {
