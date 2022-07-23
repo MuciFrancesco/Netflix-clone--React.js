@@ -14,12 +14,15 @@ function MyList({ cart, removeToFavorite }) {
   const handleCloseTrailer = useCallback(() => {
     setTrailer(-1);
   }, []);
-  const prova = async (movieId) => {
-    const pr = await tmdbApi.getVideos(category.movie, movieId);
-    const prova = pr.results.slice(0, 1).map((el) => el.key);
-    SetShowTrailer(prova);
-    console.log(showTrailer);
-  };
+  const prova = useCallback(
+    async (movieId) => {
+      const pr = await tmdbApi.getVideos(category.movie, movieId);
+      const prova = pr.results.slice(0, 1).map((el) => el.key);
+      SetShowTrailer(prova);
+      console.log(showTrailer);
+    },
+    [showTrailer]
+  );
   return (
     <div className="my-list-container">
       {cart.length > 0 ? (

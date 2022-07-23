@@ -41,12 +41,16 @@ function Details({
         </div>
         {trailer === i ? (
           <div className="row-trailer">
-            <ReactPlayer
-              key={i}
-              playing={true}
-              controls={true}
-              url={`https://www.youtube.com/watch?v=${showTrailer}`}
-            />
+            {showTrailer.length !== 0 ? (
+              <ReactPlayer
+                key={i}
+                playing={true}
+                controls={true}
+                url={`https://www.youtube.com/watch?v=${showTrailer}`}
+              />
+            ) : (
+              <h3>No video available </h3>
+            )}
           </div>
         ) : null}
         <div className="details-button">

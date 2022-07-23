@@ -1,6 +1,7 @@
-import { useCallback, useState } from "react";
+import axios from "axios";
+import { useCallback, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import tmdbApi, { category } from "../API/tmdbApi";
+import tmdbApi, { category, movieType, requests } from "../API/tmdbApi";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import HomeScreen from "../pages/HomeScreen";
@@ -46,11 +47,57 @@ function App() {
 
   const [showTrailer, SetShowTrailer] = useState("");
 
-  const prova = async (movieId) => {
-    const pr = await tmdbApi.getVideos(category.movie, movieId);
-    const prova = pr.results.slice(0, 1).map((el) => el.key);
-    SetShowTrailer(prova);
-    console.log(showTrailer);
+  const prova = useCallback(
+    async (movieId) => {
+      const pr = await tmdbApi.getVideos(category.movie, movieId);
+      const prova = pr.results.slice(0, 1).map((el) => el.key);
+      SetShowTrailer(prova);
+      console.log(showTrailer);
+    },
+    [showTrailer]
+  );
+
+  const [topRated, SetTopRated] = useState([]);
+  const [popular, setPopular] = useState([]);
+  const [upcoming, setUpcoming] = useState([]);
+  const [actionMovie, setActionMovie] = useState([]);
+  const [HorrorMovie, setHorrorMovie] = useState([]);
+  const [romanceMovie, SetRomanceMovie] = useState([]);
+  useEffect(() => {
+    (async function fetchData() {
+      const popular = await tmdbApi.getMovieList(movieType.popular, {
+        params: {},
+      });
+      setPopular(popular.results);
+
+      const topRated = await tmdbApi.getMovieList(movieType.top_rated, {
+        params: {},
+      });
+      SetTopRated(topRated.results);
+
+      const horrorMovie = await tmdbApi.getMovieList(movieType.upcoming, {
+        params: {},
+      });
+      setUpcoming(horrorMovie.results);
+
+      const horrorMovies = await axios.get(urlLinks.horrorMovie);
+      setHorrorMovie(horrorMovies.data.results);
+
+      const actionMovie = await axios.get(urlLinks.actionMovie);
+      setActionMovie(actionMovie.data.results);
+
+      const romanceMovie = await axios.get(urlLinks.romanceMovie);
+      SetRomanceMovie(romanceMovie.data.results);
+    })();
+  }, []);
+
+  const urlLinks = {
+    popular: requests.fetchTrending,
+    upComing: "upComing",
+    topRated: "topRated",
+    actionMovie: requests.fetchActionMovie,
+    horrorMovie: requests.fetchHorrorMovie,
+    romanceMovie: requests.fetchRomanceMovie,
   };
 
   return (
@@ -73,6 +120,13 @@ function App() {
             path="/"
             element={
               <HomeScreen
+                romanceMovie={romanceMovie}
+                actionMovie={actionMovie}
+                popular={popular}
+                topRated={topRated}
+                horrorMovie={HorrorMovie}
+                upcoming={upcoming}
+                urlLinks={urlLinks}
                 removeToFavorite={removeToFavorite}
                 showTrailer={showTrailer}
                 cart={cart}

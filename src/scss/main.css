@@ -354,6 +354,24 @@
   font-weight: 700;
 }
 
+ul {
+  width: auto !important;
+}
+
+li {
+  width: auto !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: calc(4% + -48px) !important;
+  z-index: 0 !important;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: calc(4% + -48px) !important;
+  z-index: 0 !important;
+}
+
 .banner {
   position: relative;
   color: #fff;

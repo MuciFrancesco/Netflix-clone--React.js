@@ -27,6 +27,7 @@
             transition: transform 450ms;
             margin-left: 10px;
             border-radius: 20px;
+
             &:hover{
                 transform:  scale(1.08);
             }
@@ -259,6 +260,24 @@ border-radius: 10px;
         font-size: 14px;
         font-weight: 700;
     }
+}
+
+
+ul{
+    width: auto !important;
+
+}
+li{
+    width: auto !important;
+
+}
+.react-multiple-carousel__arrow--right {
+    right: calc(4% + -48px) !important;
+    z-index: 0 !important;
+}
+.react-multiple-carousel__arrow--left {
+    left: calc(4% + -48px) !important;
+    z-index: 0 !important;
 }
 
 

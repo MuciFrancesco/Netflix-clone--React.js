@@ -26,18 +26,15 @@ function Nav({
     async (e) => {
       e.preventDefault();
       console.log("Searching");
-      try {
-        const url = `https://api.themoviedb.org/3/search/movie?api_key=bcc4ff10c2939665232d75d8bf0ec093&query=${query}`;
-        const res = await fetch(url);
-        const data = await res.json();
-        setMovies(data?.results);
-        console.log(movies);
-      } catch (e) {
-        console.log(e);
-      }
+
+      const url = `https://api.themoviedb.org/3/search/movie?api_key=bcc4ff10c2939665232d75d8bf0ec093&query=${query}`;
+      fetch(url)
+        .then((data) => data.json())
+        .then((data) => setMovies(data?.results));
     },
-    [query, movies]
+    [query]
   );
+  console.log(movies);
   const changeHandler = useCallback((e) => {
     setQuery(e.target.value);
   }, []);
@@ -81,6 +78,7 @@ function Nav({
                 searchMovie(e);
               }}
               placeholder="Search..."
+              disabled={moreInfo !== -1}
             />
           ) : null}
           <button
@@ -94,11 +92,13 @@ function Nav({
             }
             className="search-button"
           >
-            <img
-              className={showSearch ? "close" : "search"}
-              src={showSearch ? close : search}
-              alt="search-bar"
-            />
+            {moreInfo !== -1 ? null : (
+              <img
+                className={showSearch ? "close" : "search"}
+                src={showSearch ? close : search}
+                alt="search-bar"
+              />
+            )}
           </button>
           <button className="login-button">Login</button>
         </div>

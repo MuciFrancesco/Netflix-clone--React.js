@@ -21,8 +21,8 @@ function RowHover({
       <div className={isLargeRow ? "large-row-button" : "row-button"}>
         <button
           className="primary-btn"
-          onClick={() => {
-            handleClick(i);
+          onClick={(i) => {
+            handleClick(i, movie);
             selectedTrailer(i);
             prova(movie.id);
           }}

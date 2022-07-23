@@ -10,14 +10,14 @@ function Banner({ cart, addToFavorite, removeToFavorite }) {
     (async function fetchData() {
       const params = { page: 1 };
       try {
-        const response = await tmdbApi.getMovieList(movieType.popular, {
+        const response = await tmdbApi.getMovieList(movieType.top_rated, {
           params,
         });
-        setMovie(
+        const singleMovie =
           response.results[
             Math.floor(Math.random() * response.results.length - 1)
-          ]
-        );
+          ];
+        setMovie(singleMovie);
       } catch (error) {
         console.log(error);
       }

@@ -1,8 +1,8 @@
 import React from "react";
 import Banner from "../components/Banner";
 import Row from "../components/Row";
-import { requests } from "../API/tmdbApi";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 //hero block
 
 function HomeScreen({
@@ -16,6 +16,12 @@ function HomeScreen({
   prova,
   showTrailer,
   removeToFavorite,
+  popular,
+  topRated,
+  horrorMovie,
+  upcoming,
+  romanceMovie,
+  actionMovie,
 }) {
   return (
     <div className="App">
@@ -26,7 +32,7 @@ function HomeScreen({
       />
       <Row
         title="Netflix Original"
-        urlLink="popular"
+        movie={popular}
         isLargeRow
         cart={cart}
         addToFavorite={addToFavorite}
@@ -39,9 +45,10 @@ function HomeScreen({
         showTrailer={showTrailer}
         removeToFavorite={removeToFavorite}
       />
+      ,
       <Row
         title="Trending Now"
-        urlLink="upComing"
+        movie={topRated}
         cart={cart}
         addToFavorite={addToFavorite}
         moreInfo={moreInfo}
@@ -53,9 +60,10 @@ function HomeScreen({
         showTrailer={showTrailer}
         removeToFavorite={removeToFavorite}
       />
+      ,
       <Row
         title="Top Rated"
-        urlLink="topRated"
+        movie={upcoming}
         isLargeRow
         cart={cart}
         addToFavorite={addToFavorite}
@@ -70,7 +78,7 @@ function HomeScreen({
       />
       <Row
         title="Action Movie"
-        urlLink={requests.fetchActionMovie}
+        movie={actionMovie}
         cart={cart}
         addToFavorite={addToFavorite}
         moreInfo={moreInfo}
@@ -84,7 +92,7 @@ function HomeScreen({
       />
       <Row
         title="Horror Movie"
-        urlLink={requests.fetchHorrorMovie}
+        movie={horrorMovie}
         isLargeRow
         cart={cart}
         addToFavorite={addToFavorite}
@@ -99,7 +107,7 @@ function HomeScreen({
       />
       <Row
         title="Romance Movie"
-        urlLink={requests.fetchRomanceMovie}
+        movie={romanceMovie}
         cart={cart}
         addToFavorite={addToFavorite}
         moreInfo={moreInfo}
