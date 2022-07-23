@@ -4,23 +4,19 @@ import apiConfig from "../API/reguests";
 import tmdbApi, { category, movieType } from "../API/tmdbApi";
 
 function Banner({ cart, addToFavorite, removeToFavorite }) {
-  const [movie, setMovie] = useState([]);
+  const [movie, setMovie] = useState();
 
   useEffect(() => {
     (async function fetchData() {
       const params = { page: 1 };
-      try {
-        const response = await tmdbApi.getMovieList(movieType.top_rated, {
-          params,
-        });
+      const response = await tmdbApi.getMovieList(movieType.top_rated, {
+        params,
+      });
+      do {
         const singleMovie =
-          response.results[
-            Math.floor(Math.random() * response.results.length - 1)
-          ];
+          response.results[Math.floor(Math.random() * response.results.length)];
         setMovie(singleMovie);
-      } catch (error) {
-        console.log(error);
-      }
+      } while (movie === {});
     })();
   }, []);
 

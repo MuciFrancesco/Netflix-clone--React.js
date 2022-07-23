@@ -71,8 +71,8 @@ function Row({
         <Carousel
           infinite={true}
           responsive={responsive}
-          transitionDuration={300}
-          customTransition={"transform 0.3s ease-in-out"}
+          transitionDuration={600}
+          customTransition={"transform 0.6s ease-in-out"}
           containerClass="row"
           itemClass="row-posters"
         >

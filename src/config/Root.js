@@ -1,10 +1,11 @@
 import axios from "axios";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import tmdbApi, { category, movieType, requests } from "../API/tmdbApi";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import HomeScreen from "../pages/HomeScreen";
+import MovieList from "../pages/MovieList";
 import MyList from "../pages/MyList";
 
 function App() {
@@ -63,6 +64,8 @@ function App() {
   const [actionMovie, setActionMovie] = useState([]);
   const [HorrorMovie, setHorrorMovie] = useState([]);
   const [romanceMovie, SetRomanceMovie] = useState([]);
+  const [movie, setMovie] = useState([]);
+
   useEffect(() => {
     (async function fetchData() {
       const popular = await tmdbApi.getMovieList(movieType.popular, {
@@ -88,6 +91,9 @@ function App() {
 
       const romanceMovie = await axios.get(urlLinks.romanceMovie);
       SetRomanceMovie(romanceMovie.data.results);
+
+      const movieList = [...topRated.results, ...popular.results];
+      setMovie(movieList);
     })();
   }, []);
 
@@ -139,7 +145,25 @@ function App() {
                 prova={prova}
               />
             }
-          ></Route>
+          />
+          <Route
+            path="/film"
+            element={
+              <MovieList
+                movie={movie}
+                removeToFavorite={removeToFavorite}
+                showTrailer={showTrailer}
+                cart={cart}
+                addToFavorite={addToFavorite}
+                moreInfo={moreInfo}
+                handleClick={handleClick}
+                handleCloseDetails={handleCloseDetails}
+                trailer={trailer}
+                selectedTrailer={selectedTrailer}
+                prova={prova}
+              />
+            }
+          />
           <Route
             path="/myList"
             element={<MyList cart={cart} removeToFavorite={removeToFavorite} />}

@@ -775,6 +775,32 @@ li {
   font-weight: 600;
 }
 
+.movie-list {
+  width: 100%;
+  height: 100%;
+}
+
+.movie-list .movie {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.movie-list .movie h1 {
+  font-size: 25px;
+  color: white;
+}
+
 footer {
   position: relative;
   width: 100%;
