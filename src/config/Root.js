@@ -1,15 +1,30 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import tmdbApi, { category, movieType, requests } from "../API/tmdbApi";
+import tmdbApi, { category, movieType, requests, tvType } from "../API/tmdbApi";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import HomeScreen from "../pages/HomeScreen";
 import MovieList from "../pages/MovieList";
 import MyList from "../pages/MyList";
+import TvList from "../pages/TvList";
+import ScrollToTop from "../components/ScrollToTop";
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [topRated, SetTopRated] = useState([]);
+  const [popular, setPopular] = useState([]);
+  const [upcoming, setUpcoming] = useState([]);
+  const [actionMovie, setActionMovie] = useState([]);
+  const [HorrorMovie, setHorrorMovie] = useState([]);
+  const [romanceMovie, SetRomanceMovie] = useState([]);
+  const [tvPopular, setTvPopular] = useState([]);
+  const [tvOnAir, setTvOnAir] = useState([]);
+  const [tvTopRated, setTvTopRated] = useState([]);
+  const [tvComedy, setTvComedy] = useState([]);
+  const [realityTv, setRealityTv] = useState([]);
+  const [tvDramma, setTvDramma] = useState([]);
+
   const addToFavorite = useCallback(
     (item) => {
       const control = cart.find((movie) => movie.id === item.id);
@@ -58,42 +73,65 @@ function App() {
     [showTrailer]
   );
 
-  const [topRated, SetTopRated] = useState([]);
-  const [popular, setPopular] = useState([]);
-  const [upcoming, setUpcoming] = useState([]);
-  const [actionMovie, setActionMovie] = useState([]);
-  const [HorrorMovie, setHorrorMovie] = useState([]);
-  const [romanceMovie, SetRomanceMovie] = useState([]);
-  const [movie, setMovie] = useState([]);
+  const provatwo = useCallback(
+    async (tvId) => {
+      const pr = await tmdbApi.getVideos(category.tv, tvId);
+      const prova = pr.results.slice(0, 1).map((el) => el.key);
+      SetShowTrailer(prova);
+      console.log(showTrailer);
+    },
+    [showTrailer]
+  );
 
   useEffect(() => {
     (async function fetchData() {
       const popular = await tmdbApi.getMovieList(movieType.popular, {
         params: {},
       });
-      setPopular(popular.results);
+      setPopular(popular?.results);
 
       const topRated = await tmdbApi.getMovieList(movieType.top_rated, {
         params: {},
       });
-      SetTopRated(topRated.results);
+      SetTopRated(topRated?.results);
 
       const horrorMovie = await tmdbApi.getMovieList(movieType.upcoming, {
         params: {},
       });
-      setUpcoming(horrorMovie.results);
+      setUpcoming(horrorMovie?.results);
 
       const horrorMovies = await axios.get(urlLinks.horrorMovie);
-      setHorrorMovie(horrorMovies.data.results);
+      setHorrorMovie(horrorMovies?.data?.results);
 
       const actionMovie = await axios.get(urlLinks.actionMovie);
-      setActionMovie(actionMovie.data.results);
+      setActionMovie(actionMovie?.data?.results);
 
       const romanceMovie = await axios.get(urlLinks.romanceMovie);
-      SetRomanceMovie(romanceMovie.data.results);
+      SetRomanceMovie(romanceMovie?.data?.results);
 
-      const movieList = [...topRated.results, ...popular.results];
-      setMovie(movieList);
+      const tvPopular = await tmdbApi.getTvList(tvType.popular, {
+        params: {},
+      });
+      setTvPopular(tvPopular?.results);
+
+      const tvTopRated = await tmdbApi.getTvList(tvType.top_rated, {
+        params: {},
+      });
+      setTvTopRated(tvTopRated?.results);
+
+      const tvOnAir = await tmdbApi.getTvList(tvType.on_the_air, {
+        params: {},
+      });
+      setTvOnAir(tvOnAir?.results);
+
+      const tvComedy = await axios.get(urlLinks.tvComedy);
+      setTvComedy(tvComedy?.data?.results);
+
+      const tvReality = await axios.get(urlLinks.realityTv);
+      setRealityTv(tvReality?.data?.results);
+
+      const tvDramma = await axios.get(urlLinks.tvDramma);
+      setTvDramma(tvDramma?.data?.results);
     })();
   }, []);
 
@@ -104,6 +142,9 @@ function App() {
     actionMovie: requests.fetchActionMovie,
     horrorMovie: requests.fetchHorrorMovie,
     romanceMovie: requests.fetchRomanceMovie,
+    tvComedy: requests.fetchComedyTv,
+    realityTv: requests.fetchRealityTv,
+    tvDramma: requests.fetchDrammaTv,
   };
 
   return (
@@ -121,54 +162,93 @@ function App() {
           addToFavorite={addToFavorite}
           removeToFavorite={removeToFavorite}
         />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <HomeScreen
-                romanceMovie={romanceMovie}
-                actionMovie={actionMovie}
-                popular={popular}
-                topRated={topRated}
-                horrorMovie={HorrorMovie}
-                upcoming={upcoming}
-                urlLinks={urlLinks}
-                removeToFavorite={removeToFavorite}
-                showTrailer={showTrailer}
-                cart={cart}
-                addToFavorite={addToFavorite}
-                moreInfo={moreInfo}
-                handleClick={handleClick}
-                handleCloseDetails={handleCloseDetails}
-                trailer={trailer}
-                selectedTrailer={selectedTrailer}
-                prova={prova}
-              />
-            }
-          />
-          <Route
-            path="/film"
-            element={
-              <MovieList
-                movie={movie}
-                removeToFavorite={removeToFavorite}
-                showTrailer={showTrailer}
-                cart={cart}
-                addToFavorite={addToFavorite}
-                moreInfo={moreInfo}
-                handleClick={handleClick}
-                handleCloseDetails={handleCloseDetails}
-                trailer={trailer}
-                selectedTrailer={selectedTrailer}
-                prova={prova}
-              />
-            }
-          />
-          <Route
-            path="/myList"
-            element={<MyList cart={cart} removeToFavorite={removeToFavorite} />}
-          ></Route>
-        </Routes>
+        <ScrollToTop>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <HomeScreen
+                  provatwo={provatwo}
+                  tvTopRated={tvTopRated}
+                  tvOnAir={tvOnAir}
+                  tvComedy={tvComedy}
+                  tvPopular={tvPopular}
+                  actionMovie={actionMovie}
+                  popular={popular}
+                  topRated={topRated}
+                  upcoming={upcoming}
+                  urlLinks={urlLinks}
+                  removeToFavorite={removeToFavorite}
+                  showTrailer={showTrailer}
+                  cart={cart}
+                  addToFavorite={addToFavorite}
+                  moreInfo={moreInfo}
+                  handleClick={handleClick}
+                  handleCloseDetails={handleCloseDetails}
+                  trailer={trailer}
+                  selectedTrailer={selectedTrailer}
+                  prova={prova}
+                />
+              }
+            />
+
+            <Route
+              path="/series"
+              element={
+                <TvList
+                  realityTv={realityTv}
+                  tvDramma={tvDramma}
+                  tvTopRated={tvTopRated}
+                  tvOnAir={tvOnAir}
+                  tvComedy={tvComedy}
+                  tvPopular={tvPopular}
+                  urlLinks={urlLinks}
+                  removeToFavorite={removeToFavorite}
+                  showTrailer={showTrailer}
+                  cart={cart}
+                  addToFavorite={addToFavorite}
+                  moreInfo={moreInfo}
+                  handleClick={handleClick}
+                  handleCloseDetails={handleCloseDetails}
+                  trailer={trailer}
+                  selectedTrailer={selectedTrailer}
+                  prova={prova}
+                  provatwo={provatwo}
+                />
+              }
+            ></Route>
+            <Route
+              path="/film"
+              element={
+                <MovieList
+                  actionMovie={actionMovie}
+                  popular={popular}
+                  topRated={topRated}
+                  upcoming={upcoming}
+                  horrorMovie={HorrorMovie}
+                  romanceMovie={romanceMovie}
+                  removeToFavorite={removeToFavorite}
+                  showTrailer={showTrailer}
+                  cart={cart}
+                  addToFavorite={addToFavorite}
+                  moreInfo={moreInfo}
+                  handleClick={handleClick}
+                  handleCloseDetails={handleCloseDetails}
+                  trailer={trailer}
+                  selectedTrailer={selectedTrailer}
+                  prova={prova}
+                  provatwo={provatwo}
+                />
+              }
+            />
+            <Route
+              path="/myList"
+              element={
+                <MyList cart={cart} removeToFavorite={removeToFavorite} />
+              }
+            ></Route>
+          </Routes>
+        </ScrollToTop>
         <Footer />
       </BrowserRouter>
     </div>

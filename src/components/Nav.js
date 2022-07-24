@@ -4,7 +4,6 @@ import netflix from "../assets/netflix-logo.svg";
 import search from "../assets/search-nav.svg";
 import close from "../assets/close.svg";
 import SearchBar from "./SearchBar";
-import Details from "./Details";
 
 function Nav({
   handleCloseDetails,

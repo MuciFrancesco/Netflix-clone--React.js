@@ -13,6 +13,8 @@ function RowHover({
   addToFavorite,
   cart,
   removeToFavorite,
+  isSeries,
+  provatwo,
 }) {
   return (
     <>
@@ -21,11 +23,19 @@ function RowHover({
       <div className={isLargeRow ? "large-row-button" : "row-button"}>
         <button
           className="primary-btn"
-          onClick={(i) => {
-            handleClick(i, movie);
-            selectedTrailer(i);
-            prova(movie.id);
-          }}
+          onClick={
+            !isSeries
+              ? (i) => {
+                  handleClick(i, movie);
+                  selectedTrailer(i);
+                  prova(movie.id);
+                }
+              : (i) => {
+                  handleClick(i, movie);
+                  selectedTrailer(i);
+                  provatwo(movie.id);
+                }
+          }
         >
           <img src={ellipsis} alt="More Info" />
         </button>

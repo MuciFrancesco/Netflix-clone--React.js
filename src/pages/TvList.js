@@ -1,7 +1,12 @@
 import React from "react";
 import Row from "../components/Row";
 
-function MovieList({
+function TvList({
+  tvTopRated,
+  tvOnAir,
+  tvComedy,
+  tvPopular,
+  urlLinks,
   removeToFavorite,
   showTrailer,
   cart,
@@ -12,20 +17,17 @@ function MovieList({
   trailer,
   selectedTrailer,
   prova,
-  actionMovie,
-  popular,
-  topRated,
-  upcoming,
-  horrorMovie,
-  romanceMovie,
+  realityTv,
+  tvDramma,
   provatwo,
 }) {
   return (
-    <div className="movie-list">
+    <div className="tv-list">
       <Row
+        isSeries
         isLargeRow
-        movie={popular}
-        title="Popular Films"
+        movie={tvTopRated}
+        title="Top rated Series"
         removeToFavorite={removeToFavorite}
         showTrailer={showTrailer}
         cart={cart}
@@ -39,9 +41,10 @@ function MovieList({
         provatwo={provatwo}
       />
       <Row
+        isSeries
         isLargeRow
-        movie={topRated}
-        title="Top rated Films"
+        movie={tvPopular}
+        title="Popular Series"
         removeToFavorite={removeToFavorite}
         showTrailer={showTrailer}
         cart={cart}
@@ -55,9 +58,10 @@ function MovieList({
         provatwo={provatwo}
       />
       <Row
+        isSeries
         isLargeRow
-        movie={upcoming}
-        title="Upcoming Films"
+        movie={tvOnAir}
+        title="On air Series"
         removeToFavorite={removeToFavorite}
         showTrailer={showTrailer}
         cart={cart}
@@ -71,9 +75,10 @@ function MovieList({
         provatwo={provatwo}
       />
       <Row
+        isSeries
         isLargeRow
-        movie={actionMovie}
-        title="Action Films"
+        movie={tvComedy}
+        title="Comedy Series"
         removeToFavorite={removeToFavorite}
         showTrailer={showTrailer}
         cart={cart}
@@ -87,9 +92,10 @@ function MovieList({
         provatwo={provatwo}
       />
       <Row
+        isSeries
         isLargeRow
-        movie={horrorMovie}
-        title="Horror Films"
+        movie={realityTv}
+        title="Reality Series"
         removeToFavorite={removeToFavorite}
         showTrailer={showTrailer}
         cart={cart}
@@ -102,10 +108,12 @@ function MovieList({
         prova={prova}
         provatwo={provatwo}
       />
+
       <Row
+        isSeries
         isLargeRow
-        movie={romanceMovie}
-        title="Romance Films"
+        movie={tvDramma}
+        title="Dramma Series"
         removeToFavorite={removeToFavorite}
         showTrailer={showTrailer}
         cart={cart}
@@ -122,4 +130,4 @@ function MovieList({
   );
 }
 
-export default MovieList;
+export default TvList;

@@ -26,6 +26,9 @@ export const requests = {
   fetchHorrorMovie: `${apiConfig.baseUrl}/discover/movie?api_key=${apiConfig.APIKEY}&with_genres=27`,
   fetchRomanceMovie: `${apiConfig.baseUrl}/discover/movie?api_key=${apiConfig.APIKEY}&with_genres=10749`,
   fetchDocumentaries: `${apiConfig.baseUrl}/discover/movie?api_key=${apiConfig.APIKEY}&with_genres=99`,
+  fetchComedyTv: `${apiConfig.baseUrl}/discover/tv?api_key=${apiConfig.APIKEY}&with_genres=35&language=en-US`,
+  fetchDrammaTv: `${apiConfig.baseUrl}/discover/tv?api_key=${apiConfig.APIKEY}&with_genres=18&language=en-US`,
+  fetchRealityTv: `${apiConfig.baseUrl}/discover/tv?api_key=${apiConfig.APIKEY}&with_genres=10764&language=en-US`,
 };
 
 const tmdbApi = {

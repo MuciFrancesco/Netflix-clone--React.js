@@ -17,6 +17,8 @@ function Row({
   removeToFavorite,
   movie,
   id,
+  isSeries,
+  provatwo,
 }) {
   const [isHovering, SetIsOvering] = useState(-1);
   const [openDetails, setOpenDetails] = useState(false);
@@ -78,7 +80,7 @@ function Row({
         >
           {movie?.map((movie, i) => (
             <div key={i}>
-              <div className="row-poster-div">
+              <div style={{}} className="row-poster-div">
                 <a
                   onMouseOver={() => handleMouseOver(i)}
                   onMouseOut={() => handleMouseOut()}
@@ -97,10 +99,13 @@ function Row({
                         addToFavorite={addToFavorite}
                         cart={cart}
                         removeToFavorite={removeToFavorite}
+                        provatwo={provatwo}
+                        isSeries={isSeries}
                       />
                     </>
                   ) : null}
                   <img
+                    id="row-poster-id"
                     className={`row-poster ${
                       isLargeRow ? "row-posterLarge" : ""
                     }`}

@@ -18,10 +18,13 @@ function HomeScreen({
   removeToFavorite,
   popular,
   topRated,
-  horrorMovie,
   upcoming,
-  romanceMovie,
   actionMovie,
+  tvPopular,
+  tvComedy,
+  tvTopRated,
+  tvOnAir,
+  provatwo,
 }) {
   return (
     <div className="App">
@@ -31,6 +34,7 @@ function HomeScreen({
         removeToFavorite={removeToFavorite}
       />
       <Row
+        provatwo={provatwo}
         title="Netflix Original"
         movie={popular}
         isLargeRow
@@ -47,6 +51,7 @@ function HomeScreen({
       />
       ,
       <Row
+        provatwo={provatwo}
         title="Trending Now"
         movie={topRated}
         cart={cart}
@@ -62,7 +67,8 @@ function HomeScreen({
       />
       ,
       <Row
-        title="Top Rated"
+        provatwo={provatwo}
+        title="Top Rated Movie"
         movie={upcoming}
         isLargeRow
         cart={cart}
@@ -77,8 +83,10 @@ function HomeScreen({
         removeToFavorite={removeToFavorite}
       />
       <Row
-        title="Action Movie"
-        movie={actionMovie}
+        provatwo={provatwo}
+        isSeries
+        title="Top rated Series"
+        movie={tvTopRated}
         cart={cart}
         addToFavorite={addToFavorite}
         moreInfo={moreInfo}
@@ -91,8 +99,9 @@ function HomeScreen({
         removeToFavorite={removeToFavorite}
       />
       <Row
-        title="Horror Movie"
-        movie={horrorMovie}
+        provatwo={provatwo}
+        title="Action Movie"
+        movie={actionMovie}
         isLargeRow
         cart={cart}
         addToFavorite={addToFavorite}
@@ -106,8 +115,43 @@ function HomeScreen({
         removeToFavorite={removeToFavorite}
       />
       <Row
-        title="Romance Movie"
-        movie={romanceMovie}
+        provatwo={provatwo}
+        isSeries
+        title="Popular Series"
+        movie={tvPopular}
+        cart={cart}
+        addToFavorite={addToFavorite}
+        moreInfo={moreInfo}
+        handleClick={handleClick}
+        handleCloseDetails={handleCloseDetails}
+        trailer={trailer}
+        selectedTrailer={selectedTrailer}
+        prova={prova}
+        showTrailer={showTrailer}
+        removeToFavorite={removeToFavorite}
+      />
+      <Row
+        provatwo={provatwo}
+        isSeries
+        title="Series on air"
+        movie={tvOnAir}
+        isLargeRow
+        cart={cart}
+        addToFavorite={addToFavorite}
+        moreInfo={moreInfo}
+        handleClick={handleClick}
+        handleCloseDetails={handleCloseDetails}
+        trailer={trailer}
+        selectedTrailer={selectedTrailer}
+        prova={prova}
+        showTrailer={showTrailer}
+        removeToFavorite={removeToFavorite}
+      />
+      <Row
+        provatwo={provatwo}
+        isSeries
+        title="Comedy Tv"
+        movie={tvComedy}
         cart={cart}
         addToFavorite={addToFavorite}
         moreInfo={moreInfo}

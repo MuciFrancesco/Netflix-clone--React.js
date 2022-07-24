@@ -6,10 +6,7 @@
     }
     .row-posters{
         display: flex;
-        overflow-y: hidden;
-        overflow-x: scroll;
         padding: 20px;
-        width: 100%;
 
         &::-webkit-scrollbar{
             background: black;
