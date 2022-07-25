@@ -1,7 +1,6 @@
 import React from "react";
 import apiConfig from "../API/reguests";
 import ReactPlayer from "react-player";
-import addToList from "../assets/add-to-list-row-red.svg";
 import check from "../assets/check.svg";
 
 function Details({
@@ -46,7 +45,7 @@ function Details({
                 key={i}
                 playing={true}
                 controls={true}
-                url={`https://www.youtube.com/watch?v=${showTrailer}`}
+                url={`https://www.youtube-nocookie.com/watch?v=${showTrailer}`}
               />
             ) : (
               <h3>No video available </h3>

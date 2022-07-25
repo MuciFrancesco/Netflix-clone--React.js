@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import apiConfig from "../API/reguests";
@@ -23,7 +24,7 @@ function Banner({
         });
       }
       if (upcomingTvBanner) {
-        response = await tmdbApi.getTvList(tvType.top_rated, {
+        response = await tmdbApi.getTvList(tvType.popular, {
           params,
         });
       }
@@ -119,7 +120,7 @@ function Banner({
             width={"100vw"}
             height={"100%"}
             playing={true}
-            url={`https://www.youtube.com/watch?v=${showTrailer}`}
+            url={`https://www.youtube.com/watch?v=${showTrailer}&SameSite=Strict&Secure`}
           />
           <div className="banner-close-btn">
             <button
