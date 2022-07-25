@@ -1,17 +1,37 @@
 import React, { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import apiConfig from "../API/reguests";
-import tmdbApi, { category, movieType } from "../API/tmdbApi";
+import tmdbApi, { category, movieType, tvType } from "../API/tmdbApi";
 
-function Banner({ cart, addToFavorite, removeToFavorite }) {
+function Banner({
+  cart,
+  addToFavorite,
+  removeToFavorite,
+  upcomingFilmsBanner,
+  upcomingTvBanner,
+  topRatedFilmsBanner,
+}) {
   const [movie, setMovie] = useState([]);
 
   useEffect(() => {
     (async function fetchData() {
       const params = { page: 1 };
-      const response = await tmdbApi.getMovieList(movieType.top_rated, {
-        params,
-      });
+      let response;
+      if (topRatedFilmsBanner) {
+        response = await tmdbApi.getMovieList(movieType.top_rated, {
+          params,
+        });
+      }
+      if (upcomingTvBanner) {
+        response = await tmdbApi.getTvList(tvType.top_rated, {
+          params,
+        });
+      }
+      if (upcomingFilmsBanner) {
+        response = await tmdbApi.getMovieList(movieType.popular, {
+          params,
+        });
+      }
       do {
         const singleMovie =
           response.results[Math.floor(Math.random() * response.results.length)];
@@ -28,11 +48,27 @@ function Banner({ cart, addToFavorite, removeToFavorite }) {
   const [trailer, setTrailer] = useState(false);
 
   const handlePlayTrailer = async () => {
-    const request = await tmdbApi.getVideos(category.movie, movie.id);
-    const response = request.results.slice(0, 1).map((el) => el.key);
-    SetShowTrailer(response);
-    setTrailer(true);
-    console.log(showTrailer);
+    let request;
+    let response;
+    if (upcomingFilmsBanner) {
+      request = await tmdbApi.getVideos(category.movie, movie.id);
+      response = request.results.slice(0, 1).map((el) => el.key);
+      SetShowTrailer(response);
+      setTrailer(true);
+    } else if (topRatedFilmsBanner) {
+      request = await tmdbApi.getVideos(category.movie, movie.id);
+      response = request.results.slice(0, 1).map((el) => el.key);
+      SetShowTrailer(response);
+      setTrailer(true);
+    } else if (upcomingTvBanner) {
+      request = await tmdbApi.getVideos(category.tv, movie.id);
+      response = request.results.slice(0, 1).map((el) => el.key);
+      SetShowTrailer(response);
+      setTrailer(true);
+    } else {
+      SetShowTrailer("");
+      setTrailer(false);
+    }
   };
 
   return (
@@ -87,7 +123,10 @@ function Banner({ cart, addToFavorite, removeToFavorite }) {
           />
           <div className="banner-close-btn">
             <button
-              onClick={() => setTrailer(false)}
+              onClick={() => {
+                setTrailer(false);
+                SetShowTrailer("");
+              }}
               className="banner-close-trailer-btn"
             >
               Close

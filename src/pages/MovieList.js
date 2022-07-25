@@ -1,5 +1,6 @@
 import React from "react";
 import Row from "../components/Row";
+import Banner from "../components/Banner";
 
 function MovieList({
   removeToFavorite,
@@ -22,6 +23,12 @@ function MovieList({
 }) {
   return (
     <div className="movie-list">
+      <Banner
+        upcomingFilmsBanner
+        cart={cart}
+        addToFavorite={addToFavorite}
+        removeToFavorite={removeToFavorite}
+      />
       <Row
         isLargeRow
         movie={popular}

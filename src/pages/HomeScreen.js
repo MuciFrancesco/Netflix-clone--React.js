@@ -32,6 +32,7 @@ function HomeScreen({
         cart={cart}
         addToFavorite={addToFavorite}
         removeToFavorite={removeToFavorite}
+        topRatedFilmsBanner
       />
       <Row
         provatwo={provatwo}

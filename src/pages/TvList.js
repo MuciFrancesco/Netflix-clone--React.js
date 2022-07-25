@@ -1,4 +1,5 @@
 import React from "react";
+import Banner from "../components/Banner";
 import Row from "../components/Row";
 
 function TvList({
@@ -23,6 +24,12 @@ function TvList({
 }) {
   return (
     <div className="tv-list">
+      <Banner
+        upcomingTvBanner
+        cart={cart}
+        addToFavorite={addToFavorite}
+        removeToFavorite={removeToFavorite}
+      />
       <Row
         isSeries
         isLargeRow
