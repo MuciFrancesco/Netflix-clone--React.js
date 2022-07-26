@@ -84,6 +84,18 @@ function AppRouter() {
     [showTrailer]
   );
 
+  const urlLinks = {
+    popular: requests.fetchTrending,
+    upComing: "upComing",
+    topRated: "topRated",
+    actionMovie: requests.fetchActionMovie,
+    horrorMovie: requests.fetchHorrorMovie,
+    romanceMovie: requests.fetchRomanceMovie,
+    tvComedy: requests.fetchComedyTv,
+    realityTv: requests.fetchRealityTv,
+    tvDramma: requests.fetchDrammaTv,
+  };
+
   useEffect(() => {
     Promise.all([
       tmdbApi
@@ -130,19 +142,15 @@ function AppRouter() {
       axios.get(urlLinks.realityTv).then((el) => setRealityTv(el.data.results)),
       axios.get(urlLinks.tvDramma).then((el) => setTvDramma(el.data.results)),
     ]);
-  }, []);
+  }, [
+    urlLinks.actionMovie,
+    urlLinks.horrorMovie,
+    urlLinks.realityTv,
+    urlLinks.romanceMovie,
+    urlLinks.tvComedy,
+    urlLinks.tvDramma,
+  ]);
 
-  const urlLinks = {
-    popular: requests.fetchTrending,
-    upComing: "upComing",
-    topRated: "topRated",
-    actionMovie: requests.fetchActionMovie,
-    horrorMovie: requests.fetchHorrorMovie,
-    romanceMovie: requests.fetchRomanceMovie,
-    tvComedy: requests.fetchComedyTv,
-    realityTv: requests.fetchRealityTv,
-    tvDramma: requests.fetchDrammaTv,
-  };
   const location = useLocation();
   return (
     <>
