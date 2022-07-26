@@ -1,13 +1,13 @@
 import React from "react";
 import Banner from "../components/Banner";
 import Row from "../components/Row";
+import { motion } from "framer-motion";
 
 function TvList({
   tvTopRated,
   tvOnAir,
   tvComedy,
   tvPopular,
-  urlLinks,
   removeToFavorite,
   showTrailer,
   cart,
@@ -17,13 +17,18 @@ function TvList({
   handleCloseDetails,
   trailer,
   selectedTrailer,
-  prova,
   realityTv,
   tvDramma,
-  provatwo,
+  videoMovieTrailer,
+  videoTvTrailer,
 }) {
   return (
-    <div className="tv-list">
+    <motion.div
+      className="tv-list"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Banner
         upcomingTvBanner
         cart={cart}
@@ -44,8 +49,8 @@ function TvList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
         isSeries
@@ -61,8 +66,8 @@ function TvList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
         isSeries
@@ -78,8 +83,8 @@ function TvList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
         isSeries
@@ -95,8 +100,8 @@ function TvList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
         isSeries
@@ -112,8 +117,8 @@ function TvList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
 
       <Row
@@ -130,10 +135,10 @@ function TvList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
-    </div>
+    </motion.div>
   );
 }
 

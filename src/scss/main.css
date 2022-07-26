@@ -34,7 +34,7 @@
   transition: transform 450ms;
   transition: transform 450ms, -webkit-transform 450ms;
   margin-left: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .row .row-posters .row-poster-div:hover {
@@ -86,7 +86,7 @@
           justify-content: center;
   height: 100%;
   background: #00000065;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .row .row-posters .row-poster-div a .large-row-button {
@@ -221,6 +221,7 @@
   display: flex;
   gap: 1rem;
   background-color: #222;
+  overflow: auto;
 }
 
 .details .details-img {
@@ -290,6 +291,7 @@
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
+  padding-bottom: 2rem;
 }
 
 .details .details-info .details-button button {

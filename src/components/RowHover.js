@@ -9,12 +9,12 @@ function RowHover({
   handleClick,
   i,
   selectedTrailer,
-  prova,
   addToFavorite,
   cart,
   removeToFavorite,
   isSeries,
-  provatwo,
+  videoMovieTrailer,
+  videoTvTrailer,
 }) {
   return (
     <>
@@ -28,12 +28,12 @@ function RowHover({
               ? (i) => {
                   handleClick(i, movie);
                   selectedTrailer(i);
-                  prova(movie.id);
+                  videoMovieTrailer(movie.id);
                 }
               : (i) => {
                   handleClick(i, movie);
                   selectedTrailer(i);
-                  provatwo(movie.id);
+                  videoTvTrailer(movie.id);
                 }
           }
         >

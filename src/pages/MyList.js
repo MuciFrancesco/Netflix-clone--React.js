@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import apiConfig from "../API/reguests";
 import tmdbApi, { category } from "../API/tmdbApi";
 import ReactPlayer from "react-player";
+import { motion } from "framer-motion";
 
 function MyList({ cart, removeToFavorite }) {
   const [showTrailer, SetShowTrailer] = useState([]);
@@ -30,7 +31,12 @@ function MyList({ cart, removeToFavorite }) {
   }, []);
 
   return (
-    <div className="my-list-container">
+    <motion.div
+      className="my-list-container"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       {cart.length > 0 ? (
         cart.map((el, i) => {
           return (
@@ -97,7 +103,7 @@ function MyList({ cart, removeToFavorite }) {
       ) : (
         <h1 className="alert-list">No Movie in My List</h1>
       )}
-    </div>
+    </motion.div>
   );
 }
 

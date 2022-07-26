@@ -11,7 +11,7 @@ function Nav({
   moreInfo,
   trailer,
   showTrailer,
-  prova,
+  videoMovieTrailer,
   selectedTrailer,
   cart,
   addToFavorite,
@@ -112,7 +112,7 @@ function Nav({
           openDetails={moreInfo}
           trailer={trailer}
           showTrailer={showTrailer}
-          prova={prova}
+          videoMovieTrailer={videoMovieTrailer}
           selectedTrailer={selectedTrailer}
           cart={cart}
           addToFavorite={addToFavorite}

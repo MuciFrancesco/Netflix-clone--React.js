@@ -10,11 +10,11 @@ function SearchBar({
   handleCloseDetails,
   trailer,
   showTrailer,
-  prova,
   selectedTrailer,
   cart,
   addToFavorite,
   removeToFavorite,
+  videoMovieTrailer,
 }) {
   return (
     <div className="search-bar-container">
@@ -26,7 +26,7 @@ function SearchBar({
                 onClick={() => {
                   handleOpenDetail(i);
                   selectedTrailer(i);
-                  prova(movies.id);
+                  videoMovieTrailer(movies.id);
                 }}
               >
                 {movies.title}

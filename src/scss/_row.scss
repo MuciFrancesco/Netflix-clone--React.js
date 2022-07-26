@@ -23,7 +23,7 @@
             height: 100%;
             transition: transform 450ms;
             margin-left: 10px;
-            border-radius: 20px;
+            border-radius: 10px;
 
             &:hover{
                 transform:  scale(1.08);
@@ -56,7 +56,7 @@
                     justify-content: center;
                     height: 100%;
                     background: #00000065;
-                    border-radius: 15px;
+                    border-radius: 5px;
                 }
                 .large-row-button{
                     width: 90%;
@@ -154,6 +154,7 @@ border-radius: 10px;
     display:flex;
     gap: 1rem;
     background-color: #222;
+    overflow: auto;
     .details-img{
         position: relative;
         width: 50%;
@@ -198,6 +199,7 @@ border-radius: 10px;
             align-items: center;
             justify-content: center;
             position: relative;
+            padding-bottom: 2rem;
             button{
                 cursor: pointer;
                 color:white;

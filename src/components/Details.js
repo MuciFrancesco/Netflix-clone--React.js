@@ -48,7 +48,7 @@ function Details({
                 url={`https://www.youtube-nocookie.com/watch?v=${showTrailer}`}
               />
             ) : (
-              <h3>No video available </h3>
+              <h3 style={{ color: "white" }}>No video available </h3>
             )}
           </div>
         ) : null}

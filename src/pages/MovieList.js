@@ -1,7 +1,7 @@
 import React from "react";
 import Row from "../components/Row";
 import Banner from "../components/Banner";
-
+import { motion } from "framer-motion";
 function MovieList({
   removeToFavorite,
   showTrailer,
@@ -12,17 +12,22 @@ function MovieList({
   handleCloseDetails,
   trailer,
   selectedTrailer,
-  prova,
   actionMovie,
   popular,
   topRated,
   upcoming,
   horrorMovie,
   romanceMovie,
-  provatwo,
+  videoMovieTrailer,
+  videoTvTrailer,
 }) {
   return (
-    <div className="movie-list">
+    <motion.div
+      className="movie-list"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Banner
         upcomingFilmsBanner
         cart={cart}
@@ -42,8 +47,8 @@ function MovieList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
         isLargeRow
@@ -58,8 +63,8 @@ function MovieList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
         isLargeRow
@@ -74,8 +79,8 @@ function MovieList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
         isLargeRow
@@ -90,8 +95,8 @@ function MovieList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
         isLargeRow
@@ -106,8 +111,8 @@ function MovieList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
         isLargeRow
@@ -122,10 +127,10 @@ function MovieList({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
-        provatwo={provatwo}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
-    </div>
+    </motion.div>
   );
 }
 

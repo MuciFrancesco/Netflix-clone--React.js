@@ -2,6 +2,7 @@ import React from "react";
 import Banner from "../components/Banner";
 import Row from "../components/Row";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { motion } from "framer-motion";
 
 //hero block
 
@@ -13,7 +14,6 @@ function HomeScreen({
   handleCloseDetails,
   trailer,
   selectedTrailer,
-  prova,
   showTrailer,
   removeToFavorite,
   popular,
@@ -24,10 +24,16 @@ function HomeScreen({
   tvComedy,
   tvTopRated,
   tvOnAir,
-  provatwo,
+  videoMovieTrailer,
+  videoTvTrailer,
 }) {
   return (
-    <div className="App">
+    <motion.div
+      className="App"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Banner
         cart={cart}
         addToFavorite={addToFavorite}
@@ -35,7 +41,6 @@ function HomeScreen({
         topRatedFilmsBanner
       />
       <Row
-        provatwo={provatwo}
         title="Netflix Original"
         movie={popular}
         isLargeRow
@@ -46,13 +51,13 @@ function HomeScreen({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
         showTrailer={showTrailer}
         removeToFavorite={removeToFavorite}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       ,
       <Row
-        provatwo={provatwo}
         title="Trending Now"
         movie={topRated}
         cart={cart}
@@ -62,13 +67,13 @@ function HomeScreen({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
         showTrailer={showTrailer}
         removeToFavorite={removeToFavorite}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       ,
       <Row
-        provatwo={provatwo}
         title="Top Rated Movie"
         movie={upcoming}
         isLargeRow
@@ -79,12 +84,12 @@ function HomeScreen({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
         showTrailer={showTrailer}
         removeToFavorite={removeToFavorite}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
-        provatwo={provatwo}
         isSeries
         title="Top rated Series"
         movie={tvTopRated}
@@ -95,12 +100,12 @@ function HomeScreen({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
         showTrailer={showTrailer}
         removeToFavorite={removeToFavorite}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
-        provatwo={provatwo}
         title="Action Movie"
         movie={actionMovie}
         isLargeRow
@@ -111,12 +116,12 @@ function HomeScreen({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
         showTrailer={showTrailer}
         removeToFavorite={removeToFavorite}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
-        provatwo={provatwo}
         isSeries
         title="Popular Series"
         movie={tvPopular}
@@ -127,12 +132,12 @@ function HomeScreen({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
         showTrailer={showTrailer}
         removeToFavorite={removeToFavorite}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
-        provatwo={provatwo}
         isSeries
         title="Series on air"
         movie={tvOnAir}
@@ -144,12 +149,12 @@ function HomeScreen({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
         showTrailer={showTrailer}
         removeToFavorite={removeToFavorite}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
       <Row
-        provatwo={provatwo}
         isSeries
         title="Comedy Tv"
         movie={tvComedy}
@@ -160,11 +165,12 @@ function HomeScreen({
         handleCloseDetails={handleCloseDetails}
         trailer={trailer}
         selectedTrailer={selectedTrailer}
-        prova={prova}
         showTrailer={showTrailer}
         removeToFavorite={removeToFavorite}
+        videoMovieTrailer={videoMovieTrailer}
+        videoTvTrailer={videoTvTrailer}
       />
-    </div>
+    </motion.div>
   );
 }
 
