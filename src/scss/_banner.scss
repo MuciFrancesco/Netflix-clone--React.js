@@ -91,3 +91,41 @@
     }
 }
 
+
+@media only screen and (max-width:525px){
+    .banner .banner-contents .banner-title {
+        font-size: 2.5rem;
+    }
+}
+
+
+@media only screen and (max-width:425px){
+    .banner {
+        height: 440px;
+    }
+    .banner .banner-fade-button {
+        height: 56.8%;
+    }
+    .banner .banner-contents .banner-title {
+        font-size: 2rem;
+        padding-bottom: 1.8rem;
+    }
+    .banner .banner-contents .banner-buttons .banner-button {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        font-size: 15px;
+        background-color: rgba(51, 51, 51, 0.792);
+    }
+    .banner .banner-contents .bunner-description {
+        width: 275px;
+        padding-top: 2rem;
+        font-size: 1.1rem;
+        max-width: auto;
+        height: auto;
+        text-align: justify;
+        font-size: 1rem;
+    }
+}
+

@@ -2,11 +2,14 @@
     margin-top: 1.5rem;
     h2{
         color: white;
-        margin-left: 1.5rem;
+        margin-left: 2.2rem;
+        font-size: 2rem;
     }
     .row-posters{
         display: flex;
-        padding: 20px;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 0px 20px 0px;
 
         &::-webkit-scrollbar{
             background: black;
@@ -31,7 +34,7 @@
             a{
                 color: white;
                 width: 100%;
-                max-height: 100%;
+                height:  100%;
                 object-fit: contain;
                 h1{
                     padding-left: 1rem;
@@ -50,13 +53,13 @@
                 .row-bg{
                     z-index: 0;
                     position: absolute;
-                    width: 100%;
+                    width: 95%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    height: 100%;
+                    height: 98.5%;
                     background: #00000065;
-                    border-radius: 5px;
+                    border-radius: 15px;
                 }
                 .large-row-button{
                     width: 90%;
@@ -262,23 +265,18 @@ border-radius: 10px;
 }
 
 
-ul{
-    width: auto !important;
-
+.react-multi-carousel-track{
+    margin-left: 2rem;
 }
-li{
-    width: auto !important;
 
-}
 .react-multiple-carousel__arrow--right {
-    right: calc(4% + -48px) !important;
-    z-index: 0 !important;
+    right: calc(0.1% + 1px) !important;
+    z-index: 1!important;
 }
 .react-multiple-carousel__arrow--left {
-    left: calc(4% + -48px) !important;
-    z-index: 0 !important;
+    left: calc(0.1% + 1px) !important;
+    z-index: 1!important;
 }
-
 
 
 

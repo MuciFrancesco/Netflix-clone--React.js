@@ -35,6 +35,14 @@
         input{
             width: 200px;
             height: 22px;
+            border-radius: 5px;
+            border: none;
+            padding-left: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            &::placeholder{
+                padding-left: 0rem;
+            }
         }
         .search-button{
             background: transparent;
@@ -46,7 +54,9 @@
                 width: 30px;
             }
             .close{
-                width: 20px;
+                width: 18px;
+                position: relative;
+                top: 2px;
             }
 
         }
@@ -71,5 +81,160 @@
                 transition: all 0.2s;
             }
         }
+    }
+}
+
+@media only screen and (max-width:900px){
+    .nav{
+        padding-left: 0.5rem;
+        padding-right: 0;
+    }
+    .nav .nav-group-1 .nav-logo {
+        width: 85px;
+        object-fit: contain;
+    }
+    .nav .nav-group-1 .nav-links {
+         margin-left: 0; 
+    }
+    .nav .nav-group-2 .search-button {
+        padding-right: 0rem;
+    }
+}
+
+@media only screen and (max-width:800px){
+    .nav .nav-group-1 .nav-links a {
+        font-weight: 600;
+        font-size: 14px;
+
+    }
+}
+
+@media only screen and (max-width:700px){
+    .nav .nav-group-1 .nav-links a {
+        font-weight: 600;
+        font-size: 14px;
+    }
+      .nav-links-dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropbtn {
+        background-color: rgba(51, 51, 51, 0.5);
+        color: white;
+        padding: 6px 10px 6px 10px;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+        margin-left: 1rem;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #e6e6e6;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+      }
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+        font-weight: 600;
+        &:hover{
+            background-color: #2a2a2a;
+            color: white;
+        }
+      }
+      .nav-links-dropdown:hover .dropdown-content {
+        display: block;
+        transition: 0.2s all;
+      }
+      .nav-links-dropdown:hover .dropbtn {
+        background-color: #e6e6e6;
+        color: black;
+        transition: 0.2s all;
+    }
+    .nav .nav-group-2 .search-button .search {
+        width: 22px;
+    }
+}
+
+
+@media only screen and (max-width:525px){
+    .nav .nav-group-2 input {
+        width: 125px;
+        height: 18px;
+        &::placeholder{
+            font-size: 12px;
+        }
+    }
+    .dropbtn {
+        cursor: pointer;
+        color: white;
+        outline: none;
+        border: none;
+        font-weight: 600;
+        border-radius: 0.2vw;
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+        margin-right: 0.5rem;
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+        background-color: rgba(51, 51, 51, 0.5);
+        box-sizing: border-box;
+        font-size: 15px;
+    }
+    .nav .nav-group-2 .login-button {
+        cursor: pointer;
+        color: white;
+        outline: none;
+        border: none;
+        font-weight: 600;
+        border-radius: 0.2vw;
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+        margin-right: 0.5rem;
+        padding-top: 0.3rem;
+        padding-bottom: 0.3rem;
+        background-color: rgba(51, 51, 51, 0.5);
+        box-sizing: border-box;
+        font-size: 15px;
+    }
+    .nav .nav-group-2 input {
+        height: 26px;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        top: 50px;
+        left: 0px;
+    }    
+    .nav .nav-group-2 .search-button .close {
+        padding-right: 0rem;
+        position: absolute;
+        top: 54px;
+        right: 43px;
+    }
+}
+@media only screen and (max-width:370px){
+    .nav .nav-group-2 input {
+        height: 26px;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        top: 50px;
+        left: 0px;
+    }    
+    .nav .nav-group-2 .search-button .close {
+        padding-right: 0rem;
+        position: absolute;
+        top: 54px;
+        right: 31px;
     }
 }

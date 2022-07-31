@@ -5,6 +5,11 @@ import RowHover from "./RowHover";
 import Details from "./Details";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import {
+  responsive,
+  responsiveLargerRow,
+  responsiveSmallRow,
+} from "../utility/urlLinks";
 //swich case useeffect ...chiamare prima !if...
 function Row({
   title,
@@ -44,30 +49,6 @@ function Row({
     document.body.style.overflow = "auto";
   }, []);
 
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 10,
-      slidesToSlide: 3,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 6,
-      slidesToSlide: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 4,
-      slidesToSlide: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 2,
-      slidesToSlide: 1,
-    },
-  };
-
   return (
     <>
       {movie
@@ -77,7 +58,9 @@ function Row({
               <h2>{title}</h2>
               <Carousel
                 infinite={true}
-                responsive={responsive}
+                responsive={
+                  isLargeRow ? responsiveLargerRow : responsiveSmallRow
+                }
                 transitionDuration={600}
                 customTransition={"transform 0.6s ease-in-out"}
                 containerClass="row"

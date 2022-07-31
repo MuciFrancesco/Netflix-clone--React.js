@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import Row from "../components/Row";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { motion } from "framer-motion";
+import tmdbApi, { movieType, tvType } from "../API/tmdbApi";
+import axios from "axios";
+import { urlLinks } from "../utility/urlLinks";
 
 //hero block
 
@@ -16,17 +19,67 @@ function HomeScreen({
   selectedTrailer,
   showTrailer,
   removeToFavorite,
-  popular,
-  topRated,
-  upcoming,
-  actionMovie,
-  tvPopular,
-  tvComedy,
-  tvTopRated,
-  tvOnAir,
   videoMovieTrailer,
   videoTvTrailer,
 }) {
+  const [topRated, SetTopRated] = useState([]);
+  const [popular, setPopular] = useState([]);
+  const [upcoming, setUpcoming] = useState([]);
+  const [actionMovie, setActionMovie] = useState([]);
+  const [tvPopular, setTvPopular] = useState([]);
+  const [tvOnAir, setTvOnAir] = useState([]);
+  const [tvTopRated, setTvTopRated] = useState([]);
+  const [tvComedy, setTvComedy] = useState([]);
+  useEffect(() => {
+    Promise.all([
+      tmdbApi
+        .getMovieList(movieType.popular, {
+          params: {},
+        })
+        .then((el) => setPopular(el.results))
+        .catch((err) => console.log(err)),
+      tmdbApi
+        .getMovieList(movieType.top_rated, {
+          params: {},
+        })
+        .then((el) => SetTopRated(el.results))
+        .catch((err) => console.log(err)),
+
+      tmdbApi
+        .getMovieList(movieType.upcoming, {
+          params: {},
+        })
+        .then((el) => setUpcoming(el.results))
+        .catch((err) => console.log(err)),
+      axios
+        .get(urlLinks.actionMovie)
+        .then((el) => setActionMovie(el.data.results))
+        .catch((err) => console.log(err)),
+      tmdbApi
+        .getTvList(tvType.popular, {
+          params: {},
+        })
+        .then((el) => setTvPopular(el.results))
+        .catch((err) => console.log(err)),
+      tmdbApi
+        .getTvList(tvType.top_rated, {
+          params: {},
+        })
+        .then((el) => setTvTopRated(el.results))
+        .catch((err) => console.log(err)),
+      tmdbApi
+        .getTvList(tvType.on_the_air, {
+          params: {},
+        })
+        .then((el) => setTvOnAir(el.results))
+        .catch((err) => console.log(err)),
+      axios
+        .get(urlLinks.tvComedy)
+        .then((el) => setTvComedy(el.data.results))
+        .catch((err) => console.log(err)),
+    ]);
+  }, []);
+
   return (
     <motion.div
       className="App"

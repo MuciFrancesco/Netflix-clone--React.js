@@ -4,7 +4,7 @@
     justify-content: flex-start;
     flex-direction: column;
     color:  white;
-    padding-top: 120px;
+    padding-top: 80px;
     padding-bottom: 80px;
     gap: 1rem;
     background-color: #000000e0 !important;
@@ -12,7 +12,8 @@
     z-index: 97;
     width: 100%;
     height: 100%;
-    
+    overflow: auto;
+    margin-top: 50px;
     .search-bar-movies{
         display: flex;
         align-items: center;
@@ -30,5 +31,11 @@
 
             }
         }
+    }
+}
+
+@media only screen and (max-width:525px){
+    .search-bar-container {
+        gap: 2rem;
     }
 }

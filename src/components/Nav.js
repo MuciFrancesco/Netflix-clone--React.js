@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import netflix from "../assets/netflix-logo.svg";
 import search from "../assets/search-nav.svg";
@@ -53,17 +53,42 @@ function Nav({
     document.body.style.overflow = "auto";
   }, []);
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    function handleResize() {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [width]);
+
   return (
     <>
-      <div className="nav">
+      <div
+        className="nav"
+        style={showSearch ? { background: " #000000f5" } : null}
+      >
         <div className="nav-group-1">
           <img className="nav-logo" src={netflix} alt="Netflix-logo" />
-          <div className="nav-links">
-            <Link to="/">Home</Link>
-            <Link to="/series">Tv Series</Link>
-            <Link to="/film">Film</Link>
-            <Link to="/myList">My List</Link>
-          </div>
+          {width >= 700 ? (
+            <div className="nav-links">
+              <Link to="/">Home</Link>
+              <Link to="/series">Tv Series</Link>
+              <Link to="/film">Film</Link>
+              <Link to="/myList">My List</Link>
+            </div>
+          ) : (
+            <div className="nav-links-dropdown">
+              <button className="dropbtn">Browse</button>
+              <div className="dropdown-content">
+                <Link to="/">Home</Link>
+                <Link to="/series">Tv Series</Link>
+                <Link to="/film">Film</Link>
+                <Link to="/myList">My List</Link>
+              </div>
+            </div>
+          )}
         </div>
         <div className="nav-group-2">
           {showSearch ? (

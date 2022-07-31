@@ -1,13 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import Row from "../components/Row";
 import { motion } from "framer-motion";
+import axios from "axios";
+import { urlLinks } from "../utility/urlLinks";
+import tmdbApi, { tvType } from "../API/tmdbApi";
 
 function TvList({
-  tvTopRated,
-  tvOnAir,
-  tvComedy,
-  tvPopular,
   removeToFavorite,
   showTrailer,
   cart,
@@ -17,11 +16,49 @@ function TvList({
   handleCloseDetails,
   trailer,
   selectedTrailer,
-  realityTv,
-  tvDramma,
   videoMovieTrailer,
   videoTvTrailer,
 }) {
+  const [tvPopular, setTvPopular] = useState([]);
+  const [tvOnAir, setTvOnAir] = useState([]);
+  const [tvTopRated, setTvTopRated] = useState([]);
+  const [tvComedy, setTvComedy] = useState([]);
+  const [realityTv, setRealityTv] = useState([]);
+  const [tvDramma, setTvDramma] = useState([]);
+  useEffect(() => {
+    Promise.all([
+      tmdbApi
+        .getTvList(tvType.popular, {
+          params: {},
+        })
+        .then((el) => setTvPopular(el.results))
+        .catch((err) => console.log(err)),
+      tmdbApi
+        .getTvList(tvType.top_rated, {
+          params: {},
+        })
+        .then((el) => setTvTopRated(el.results))
+        .catch((err) => console.log(err)),
+      tmdbApi
+        .getTvList(tvType.on_the_air, {
+          params: {},
+        })
+        .then((el) => setTvOnAir(el.results))
+        .catch((err) => console.log(err)),
+      axios
+        .get(urlLinks.tvComedy)
+        .then((el) => setTvComedy(el.data.results))
+        .catch((err) => console.log(err)),
+      axios
+        .get(urlLinks.realityTv)
+        .then((el) => setRealityTv(el.data.results))
+        .catch((err) => console.log(err)),
+      axios
+        .get(urlLinks.tvDramma)
+        .then((el) => setTvDramma(el.data.results))
+        .catch((err) => console.log(err)),
+    ]);
+  }, []);
   return (
     <motion.div
       className="tv-list"
