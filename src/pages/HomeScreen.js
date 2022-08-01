@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Banner from "../components/Banner";
 import Row from "../components/Row";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -30,10 +30,8 @@ function HomeScreen({
   const [tvOnAir, setTvOnAir] = useState([]);
   const [tvTopRated, setTvTopRated] = useState([]);
   const [tvComedy, setTvComedy] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     Promise.all([
       tmdbApi
         .getMovieList(movieType.popular, {
@@ -71,7 +69,6 @@ function HomeScreen({
         .then((el) => setTvOnAir(el.results)),
       axios.get(urlLinks.tvComedy).then((el) => setTvComedy(el.data.results)),
     ]);
-    setLoading(false);
   }, []);
 
   return (

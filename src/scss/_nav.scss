@@ -1,5 +1,5 @@
 .nav{
-    background: #0000008a;
+    background: #000000db;
     padding-left: 2rem;
     padding-right: 2rem;
     width: 100%;
@@ -218,6 +218,11 @@
         position: absolute;
         top: 54px;
         right: 43px;
+    }
+}
+@media only screen and (max-width:425px){
+    .nav{
+        background: #000000f0;
     }
 }
 @media only screen and (max-width:370px){

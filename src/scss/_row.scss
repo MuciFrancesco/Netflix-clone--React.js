@@ -3,7 +3,7 @@
     h2{
         color: white;
         margin-left: 2.2rem;
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
     .row-posters{
         display: flex;
@@ -58,7 +58,7 @@
                     align-items: center;
                     justify-content: center;
                     height: 98.5%;
-                    background: #00000065;
+                    background: #00000092;
                     border-radius: 15px;
                 }
                 .large-row-button{
@@ -276,6 +276,10 @@ border-radius: 10px;
 .react-multiple-carousel__arrow--left {
     left: calc(0.1% + 1px) !important;
     z-index: 1!important;
+}
+
+.react-multi-carousel-list {
+    background-color: #20202047 !important;
 }
 
 @media only screen and (max-width:800px){

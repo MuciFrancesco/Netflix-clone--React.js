@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import tmdbApi, { category } from "./API/tmdbApi";
 import Footer from "./components/Footer";

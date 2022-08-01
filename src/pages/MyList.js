@@ -19,12 +19,12 @@ function MyList({ cart, removeToFavorite }) {
     SetShowTvTrailer("");
   }, []);
 
-  const prova = useCallback(async (movieId) => {
+  const videoMovieTrailer = useCallback(async (movieId) => {
     const pr = await tmdbApi.getVideos(category.movie, movieId);
     const prova = pr?.results?.slice(0, 1).map((el) => el?.key);
     SetShowTrailer(prova);
   }, []);
-  const provatwo = useCallback(async (tvId) => {
+  const videoTvTrailer = useCallback(async (tvId) => {
     const pr = await tmdbApi.getVideos(category.tv, tvId);
     const prova = pr?.results?.slice(0, 1).map((el) => el?.key);
     SetShowTvTrailer(prova);
@@ -63,8 +63,8 @@ function MyList({ cart, removeToFavorite }) {
                 <button
                   onClick={() => {
                     selectedTrailer(i);
-                    prova(el.id);
-                    provatwo(el.id);
+                    videoMovieTrailer(el.id);
+                    videoTvTrailer(el.id);
                   }}
                 >
                   Whatch Trailer

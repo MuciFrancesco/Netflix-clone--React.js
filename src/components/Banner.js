@@ -13,6 +13,7 @@ function Banner({
   topRatedFilmsBanner,
 }) {
   const [movie, setMovie] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async function fetchData() {
