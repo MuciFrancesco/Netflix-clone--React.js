@@ -30,54 +30,48 @@ function HomeScreen({
   const [tvOnAir, setTvOnAir] = useState([]);
   const [tvTopRated, setTvTopRated] = useState([]);
   const [tvComedy, setTvComedy] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
+    setLoading(true);
     Promise.all([
       tmdbApi
         .getMovieList(movieType.popular, {
           params: {},
         })
-        .then((el) => setPopular(el.results))
-        .catch((err) => console.log(err)),
+        .then((el) => setPopular(el.results)),
       tmdbApi
         .getMovieList(movieType.top_rated, {
           params: {},
         })
-        .then((el) => SetTopRated(el.results))
-        .catch((err) => console.log(err)),
+        .then((el) => SetTopRated(el.results)),
 
       tmdbApi
         .getMovieList(movieType.upcoming, {
           params: {},
         })
-        .then((el) => setUpcoming(el.results))
-        .catch((err) => console.log(err)),
+        .then((el) => setUpcoming(el.results)),
       axios
         .get(urlLinks.actionMovie)
-        .then((el) => setActionMovie(el.data.results))
-        .catch((err) => console.log(err)),
+        .then((el) => setActionMovie(el.data.results)),
       tmdbApi
         .getTvList(tvType.popular, {
           params: {},
         })
-        .then((el) => setTvPopular(el.results))
-        .catch((err) => console.log(err)),
+        .then((el) => setTvPopular(el.results)),
       tmdbApi
         .getTvList(tvType.top_rated, {
           params: {},
         })
-        .then((el) => setTvTopRated(el.results))
-        .catch((err) => console.log(err)),
+        .then((el) => setTvTopRated(el.results)),
       tmdbApi
         .getTvList(tvType.on_the_air, {
           params: {},
         })
-        .then((el) => setTvOnAir(el.results))
-        .catch((err) => console.log(err)),
-      axios
-        .get(urlLinks.tvComedy)
-        .then((el) => setTvComedy(el.data.results))
-        .catch((err) => console.log(err)),
+        .then((el) => setTvOnAir(el.results)),
+      axios.get(urlLinks.tvComedy).then((el) => setTvComedy(el.data.results)),
     ]);
+    setLoading(false);
   }, []);
 
   return (

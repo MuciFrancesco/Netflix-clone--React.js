@@ -227,7 +227,7 @@
   display: -ms-flexbox;
   display: flex;
   gap: 1rem;
-  background-color: #222;
+  background-color: #0e0e0e;
   overflow: auto;
 }
 
@@ -372,6 +372,40 @@
 .react-multiple-carousel__arrow--left {
   left: calc(0.1% + 1px) !important;
   z-index: 1 !important;
+}
+
+@media only screen and (max-width: 800px) {
+  .row h2 {
+    color: white;
+    margin-left: 2.2rem;
+    font-size: 1.6rem;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .row h2 {
+    color: white;
+    margin-left: 2.2rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .row h2 {
+    margin-left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+  }
 }
 
 .banner {

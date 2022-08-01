@@ -156,7 +156,7 @@ border-radius: 10px;
     height: 100%;
     display:flex;
     gap: 1rem;
-    background-color: #222;
+    background-color: #0e0e0e;
     overflow: auto;
     .details-img{
         position: relative;
@@ -276,6 +276,32 @@ border-radius: 10px;
 .react-multiple-carousel__arrow--left {
     left: calc(0.1% + 1px) !important;
     z-index: 1!important;
+}
+
+@media only screen and (max-width:800px){
+    .row h2 {
+        color: white;
+        margin-left: 2.2rem;
+        font-size: 1.6rem;
+    }
+}
+@media only screen and (max-width:650px){
+    .row h2 {
+        color: white;
+        margin-left: 2.2rem;
+        font-size: 1.4rem;
+    }
+}
+@media only screen and (max-width:500px){
+    .row h2 {
+        margin-left: 0;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.3rem;
+    }
 }
 
 

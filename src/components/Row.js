@@ -5,11 +5,7 @@ import RowHover from "./RowHover";
 import Details from "./Details";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import {
-  responsive,
-  responsiveLargerRow,
-  responsiveSmallRow,
-} from "../utility/urlLinks";
+import { responsiveLargerRow, responsiveSmallRow } from "../utility/urlLinks";
 //swich case useeffect ...chiamare prima !if...
 function Row({
   title,
@@ -49,6 +45,18 @@ function Row({
     document.body.style.overflow = "auto";
   }, []);
 
+  const filterdMovies = [];
+
+  const movieControl = () => {
+    movie.map((el) => {
+      if (el.backdrop_path !== null) {
+        return filterdMovies.push(el);
+      }
+      return movie;
+    });
+  };
+  movieControl();
+
   return (
     <>
       {movie
@@ -66,54 +74,52 @@ function Row({
                 containerClass="row"
                 itemClass="row-posters"
               >
-                {movie?.map((movie, i) => (
-                  <div key={i}>
-                    {movie?.backdrop_path !== null ? (
-                      <div className="row-poster-div">
-                        <a
-                          onMouseOver={() => handleMouseOver(i)}
-                          onMouseOut={() => handleMouseOut()}
-                          key={movie.id}
-                        >
-                          {isHovering === i && movie ? (
-                            <>
-                              <RowHover
-                                selectedTrailer={selectedTrailer}
-                                i={i}
-                                movie={movie}
-                                handleClick={handleClick}
-                                isLargeRow={isLargeRow}
-                                moreInfo={moreInfo}
-                                addToFavorite={addToFavorite}
-                                cart={cart}
-                                removeToFavorite={removeToFavorite}
-                                isSeries={isSeries}
-                                videoMovieTrailer={videoMovieTrailer}
-                                videoTvTrailer={videoTvTrailer}
-                              />
-                            </>
-                          ) : null}
-                          <img
-                            id="row-poster-id"
-                            className={`row-poster ${
-                              isLargeRow ? "row-posterLarge" : ""
-                            }`}
-                            src={
-                              isLargeRow
-                                ? apiConfig?.originalImage(
-                                    movie?.poster_path || movie?.backdrop_path
-                                  )
-                                : !isLargeRow
-                                ? apiConfig?.originalImage(
-                                    movie?.backdrop_path || movie?.poster_path
-                                  )
-                                : null
-                            }
-                            alt={""}
-                          />
-                        </a>
-                      </div>
-                    ) : null}
+                {filterdMovies?.map((movie, i) => (
+                  <div id="prova" key={i}>
+                    <div className="row-poster-div">
+                      <a
+                        onMouseOver={() => handleMouseOver(i)}
+                        onMouseOut={() => handleMouseOut()}
+                        key={movie.id}
+                      >
+                        {isHovering === i && movie ? (
+                          <>
+                            <RowHover
+                              selectedTrailer={selectedTrailer}
+                              i={i}
+                              movie={movie}
+                              handleClick={handleClick}
+                              isLargeRow={isLargeRow}
+                              moreInfo={moreInfo}
+                              addToFavorite={addToFavorite}
+                              cart={cart}
+                              removeToFavorite={removeToFavorite}
+                              isSeries={isSeries}
+                              videoMovieTrailer={videoMovieTrailer}
+                              videoTvTrailer={videoTvTrailer}
+                            />
+                          </>
+                        ) : null}
+                        <img
+                          id="row-poster-id"
+                          className={`row-poster ${
+                            isLargeRow ? "row-posterLarge" : ""
+                          }`}
+                          src={
+                            isLargeRow
+                              ? apiConfig?.originalImage(
+                                  movie?.poster_path || movie?.backdrop_path
+                                )
+                              : !isLargeRow
+                              ? apiConfig?.originalImage(
+                                  movie?.backdrop_path || movie?.poster_path
+                                )
+                              : null
+                          }
+                          alt={""}
+                        />
+                      </a>
+                    </div>
                   </div>
                 ))}
               </Carousel>

@@ -57,18 +57,33 @@ export const responsiveSmallRow = {
     slidesToSlide: 3,
   },
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 5,
+    breakpoint: { max: 3000, min: 1336 },
+    items: 6,
     slidesToSlide: 3,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 4,
-    slidesToSlide: 2,
+    breakpoint: { max: 1636, min: 1400 },
+    items: 5,
+    slidesToSlide: 3,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 1400, min: 1200 },
+    items: 4,
+    slidesToSlide: 3,
+  },
+  mobiles: {
+    breakpoint: { max: 1200, min: 800 },
+    items: 3,
+    slidesToSlide: 2,
+  },
+  mobiless: {
+    breakpoint: { max: 800, min: 600 },
     items: 2,
+    slidesToSlide: 1,
+  },
+  mobilesss: {
+    breakpoint: { max: 600, min: 300 },
+    items: 1,
     slidesToSlide: 1,
   },
 };
