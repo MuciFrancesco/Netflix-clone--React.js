@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import Row from "../components/Row";
 import { motion } from "framer-motion";
-import axios from "axios";
-import { urlLinks } from "../utility/urlLinks";
-import tmdbApi, { tvType } from "../API/tmdbApi";
+import { fetchTvList } from "../API/APIcall/ApiTvList";
 
 function TvList({
   removeToFavorite,
@@ -25,39 +23,19 @@ function TvList({
   const [tvComedy, setTvComedy] = useState([]);
   const [realityTv, setRealityTv] = useState([]);
   const [tvDramma, setTvDramma] = useState([]);
+  const [status, setStatus] = useState("idle");
   useEffect(() => {
-    Promise.all([
-      tmdbApi
-        .getTvList(tvType.popular, {
-          params: {},
-        })
-        .then((el) => setTvPopular(el.results))
-        .catch((err) => console.log(err)),
-      tmdbApi
-        .getTvList(tvType.top_rated, {
-          params: {},
-        })
-        .then((el) => setTvTopRated(el.results))
-        .catch((err) => console.log(err)),
-      tmdbApi
-        .getTvList(tvType.on_the_air, {
-          params: {},
-        })
-        .then((el) => setTvOnAir(el.results))
-        .catch((err) => console.log(err)),
-      axios
-        .get(urlLinks.tvComedy)
-        .then((el) => setTvComedy(el.data.results))
-        .catch((err) => console.log(err)),
-      axios
-        .get(urlLinks.realityTv)
-        .then((el) => setRealityTv(el.data.results))
-        .catch((err) => console.log(err)),
-      axios
-        .get(urlLinks.tvDramma)
-        .then((el) => setTvDramma(el.data.results))
-        .catch((err) => console.log(err)),
-    ]);
+    setStatus("pending");
+    fetchTvList().then((res) => {
+      console.log(res);
+      setTvComedy(res.tvComedys.data.results);
+      setTvOnAir(res.tvOnAirs.results);
+      setTvDramma(res.tvDrammas.data.results);
+      setTvPopular(res.tvPopulars.results);
+      setTvTopRated(res.tvTopRateds.results);
+      setRealityTv(res.realityTvs.data.results);
+    });
+    setStatus("resolved");
   }, []);
   return (
     <motion.div
@@ -73,6 +51,7 @@ function TvList({
         removeToFavorite={removeToFavorite}
       />
       <Row
+        status={status}
         isSeries
         isLargeRow
         movie={tvTopRated}
@@ -90,6 +69,7 @@ function TvList({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isSeries
         isLargeRow
         movie={tvPopular}
@@ -107,6 +87,7 @@ function TvList({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isSeries
         isLargeRow
         movie={tvOnAir}
@@ -124,6 +105,7 @@ function TvList({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isSeries
         isLargeRow
         movie={tvComedy}
@@ -141,6 +123,7 @@ function TvList({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isSeries
         isLargeRow
         movie={realityTv}
@@ -159,6 +142,7 @@ function TvList({
       />
 
       <Row
+        status={status}
         isSeries
         isLargeRow
         movie={tvDramma}

@@ -3,9 +3,7 @@ import Banner from "../components/Banner";
 import Row from "../components/Row";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { motion } from "framer-motion";
-import tmdbApi, { movieType, tvType } from "../API/tmdbApi";
-import axios from "axios";
-import { urlLinks } from "../utility/urlLinks";
+import { fetchHomeScreen } from "../API/APIcall/ApiHomeScreen";
 
 //hero block
 
@@ -30,45 +28,21 @@ function HomeScreen({
   const [tvOnAir, setTvOnAir] = useState([]);
   const [tvTopRated, setTvTopRated] = useState([]);
   const [tvComedy, setTvComedy] = useState([]);
+  const [status, setStatus] = useState("idle");
 
   useEffect(() => {
-    Promise.all([
-      tmdbApi
-        .getMovieList(movieType.popular, {
-          params: {},
-        })
-        .then((el) => setPopular(el.results)),
-      tmdbApi
-        .getMovieList(movieType.top_rated, {
-          params: {},
-        })
-        .then((el) => SetTopRated(el.results)),
-
-      tmdbApi
-        .getMovieList(movieType.upcoming, {
-          params: {},
-        })
-        .then((el) => setUpcoming(el.results)),
-      axios
-        .get(urlLinks.actionMovie)
-        .then((el) => setActionMovie(el.data.results)),
-      tmdbApi
-        .getTvList(tvType.popular, {
-          params: {},
-        })
-        .then((el) => setTvPopular(el.results)),
-      tmdbApi
-        .getTvList(tvType.top_rated, {
-          params: {},
-        })
-        .then((el) => setTvTopRated(el.results)),
-      tmdbApi
-        .getTvList(tvType.on_the_air, {
-          params: {},
-        })
-        .then((el) => setTvOnAir(el.results)),
-      axios.get(urlLinks.tvComedy).then((el) => setTvComedy(el.data.results)),
-    ]);
+    setStatus("pending");
+    fetchHomeScreen().then((res) => {
+      setPopular(res.populars.results);
+      SetTopRated(res.topRateds.results);
+      setUpcoming(res.upcomings.results);
+      setActionMovie(res.actionMovies.data.results);
+      setTvPopular(res.tvPopulars.results);
+      setTvTopRated(res.tvTopRateds.results);
+      setTvOnAir(res.tvOnAirs.results);
+      setTvComedy(res.tvComedys.data.results);
+    });
+    setStatus("resolved");
   }, []);
 
   return (
@@ -85,6 +59,7 @@ function HomeScreen({
         topRatedFilmsBanner
       />
       <Row
+        status={status}
         title="Netflix Original"
         movie={popular}
         isLargeRow
@@ -102,6 +77,7 @@ function HomeScreen({
       />
       ,
       <Row
+        status={status}
         title="Trending Now"
         movie={topRated}
         cart={cart}
@@ -118,6 +94,7 @@ function HomeScreen({
       />
       ,
       <Row
+        status={status}
         title="Top Rated Movie"
         movie={upcoming}
         isLargeRow
@@ -134,6 +111,7 @@ function HomeScreen({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isSeries
         title="Top rated Series"
         movie={tvTopRated}
@@ -150,6 +128,7 @@ function HomeScreen({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         title="Action Movie"
         movie={actionMovie}
         isLargeRow
@@ -166,6 +145,7 @@ function HomeScreen({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isSeries
         title="Popular Series"
         movie={tvPopular}
@@ -182,6 +162,7 @@ function HomeScreen({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isSeries
         title="Series on air"
         movie={tvOnAir}
@@ -199,6 +180,7 @@ function HomeScreen({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isSeries
         title="Comedy Tv"
         movie={tvComedy}

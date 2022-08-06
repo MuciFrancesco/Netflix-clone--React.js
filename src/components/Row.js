@@ -20,6 +20,7 @@ function Row({
   isSeries,
   videoMovieTrailer,
   videoTvTrailer,
+  status,
 }) {
   const [isHovering, SetIsOvering] = useState(-1);
   const [openDetails, setOpenDetails] = useState(false);
@@ -59,7 +60,7 @@ function Row({
 
   return (
     <>
-      {movie
+      {status === "resolved" && movie
         ? movie && (
             <div className={`row ${title} `}>
               <div className="bg"></div>

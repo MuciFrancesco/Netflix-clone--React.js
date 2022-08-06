@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import Row from "../components/Row";
 import Banner from "../components/Banner";
 import { motion } from "framer-motion";
-import tmdbApi, { movieType } from "../API/tmdbApi";
-import axios from "axios";
-import { urlLinks } from "../utility/urlLinks";
+import { fetchFilmList } from "../API/APIcall/ApiFilmList";
 function MovieList({
   removeToFavorite,
   showTrailer,
@@ -24,40 +22,19 @@ function MovieList({
   const [actionMovie, setActionMovie] = useState([]);
   const [horrorMovie, setHorrorMovie] = useState([]);
   const [romanceMovie, SetRomanceMovie] = useState([]);
+  const [status, setStatus] = useState("idle");
   useEffect(() => {
-    Promise.all([
-      tmdbApi
-        .getMovieList(movieType.popular, {
-          params: {},
-        })
-        .then((el) => setPopular(el.results))
-        .catch((err) => console.log(err)),
-      tmdbApi
-        .getMovieList(movieType.top_rated, {
-          params: {},
-        })
-        .then((el) => SetTopRated(el.results))
-        .catch((err) => console.log(err)),
+    setStatus("pending");
+    fetchFilmList().then((res) => {
+      setPopular(res.populars.results);
+      SetTopRated(res.topRateds.results);
+      setUpcoming(res.upcomings.results);
+      setHorrorMovie(res.horrorMovies.data.results);
+      setActionMovie(res.actionMovies.data.results);
+      SetRomanceMovie(res.romanceMovies.data.results);
+    });
 
-      tmdbApi
-        .getMovieList(movieType.upcoming, {
-          params: {},
-        })
-        .then((el) => setUpcoming(el.results))
-        .catch((err) => console.log(err)),
-      axios
-        .get(urlLinks.horrorMovie)
-        .then((el) => setHorrorMovie(el.data.results))
-        .catch((err) => console.log(err)),
-      axios
-        .get(urlLinks.actionMovie)
-        .then((el) => setActionMovie(el.data.results))
-        .catch((err) => console.log(err)),
-      axios
-        .get(urlLinks.romanceMovie)
-        .then((el) => SetRomanceMovie(el.data.results))
-        .catch((err) => console.log(err)),
-    ]);
+    setStatus("resolved");
   }, []);
   return (
     <motion.div
@@ -73,6 +50,7 @@ function MovieList({
         removeToFavorite={removeToFavorite}
       />
       <Row
+        status={status}
         isLargeRow
         movie={popular}
         title="Popular Films"
@@ -89,6 +67,7 @@ function MovieList({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isLargeRow
         movie={topRated}
         title="Top rated Films"
@@ -105,6 +84,7 @@ function MovieList({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isLargeRow
         movie={upcoming}
         title="Upcoming Films"
@@ -121,6 +101,7 @@ function MovieList({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isLargeRow
         movie={actionMovie}
         title="Action Films"
@@ -137,6 +118,7 @@ function MovieList({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isLargeRow
         movie={horrorMovie}
         title="Horror Films"
@@ -153,6 +135,7 @@ function MovieList({
         videoTvTrailer={videoTvTrailer}
       />
       <Row
+        status={status}
         isLargeRow
         movie={romanceMovie}
         title="Romance Films"
