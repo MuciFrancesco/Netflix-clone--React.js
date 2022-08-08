@@ -72,6 +72,7 @@ function AppRouter() {
   return (
     <>
       <Nav
+        setMoreInfo={setMoreInfo}
         moreInfo={moreInfo}
         handleCloseDetails={handleCloseDetails}
         handleClick={handleClick}

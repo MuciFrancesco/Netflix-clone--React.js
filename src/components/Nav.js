@@ -16,6 +16,7 @@ function Nav({
   cart,
   addToFavorite,
   removeToFavorite,
+  setMoreInfo,
 }) {
   const [showSearch, setShowSearch] = useState(false);
   const [movies, setMovies] = useState([]);
@@ -129,6 +130,7 @@ function Nav({
       </div>
       {showSearch === true ? (
         <SearchBar
+          setMoreInfo={setMoreInfo}
           handleHideSearch={handleHideSearch}
           handleOpenDetail={handleClick}
           query={query}
