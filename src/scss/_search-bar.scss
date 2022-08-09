@@ -39,3 +39,11 @@
         gap: 2rem;
     }
 }
+
+@media only screen and (max-width:400px){
+    .search-bar-container .search-bar-movies .movies-content a {
+        color: white;
+        font-size: 12px;
+        font-weight: 600;
+    }
+}

@@ -27,7 +27,6 @@ function TvList({
   useEffect(() => {
     setStatus("pending");
     fetchTvList().then((res) => {
-      console.log(res);
       setTvComedy(res.tvComedys.data.results);
       setTvOnAir(res.tvOnAirs.results);
       setTvDramma(res.tvDrammas.data.results);

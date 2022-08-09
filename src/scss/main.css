@@ -81,7 +81,7 @@
 .row .row-posters .row-poster-div a .row-bg {
   z-index: 0;
   position: absolute;
-  width: 95%;
+  width: 97%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -91,9 +91,9 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 98.5%;
+  height: 99.5%;
   background: #00000092;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .row .row-posters .row-poster-div a .large-row-button {
@@ -206,7 +206,7 @@
   width: 180px;
   height: 100%;
   margin-left: 0px !important;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .row-details {
@@ -566,7 +566,31 @@
     font-size: 15px;
   }
   .details .details-img {
-    height: 103%;
+    height: 145vh;
+  }
+  .details .details-info {
+    top: 94px;
+  }
+  .details .details-info .details-release .details-overview {
+    font-size: 14px;
+    text-align: justify;
+    line-height: 1.3;
+  }
+  .details .details-info .details-release h2 {
+    font-size: 18px;
+  }
+  .details .details-info .details-release h3 {
+    font-size: 15px;
+  }
+  .details .details-info .details-title h1 {
+    color: white;
+    font-size: 22px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .details .details-info {
+    top: 150px;
   }
 }
 
@@ -900,6 +924,11 @@
     border: none;
     cursor: pointer;
     margin-left: 1rem;
+  }
+  .dropbtn img {
+    padding-left: 0.5rem;
+    position: relative;
+    bottom: 1px;
   }
   .dropdown-content {
     display: none;
@@ -1274,6 +1303,14 @@
 @media only screen and (max-width: 525px) {
   .search-bar-container {
     gap: 2rem;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .search-bar-container .search-bar-movies .movies-content a {
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
   }
 }
 

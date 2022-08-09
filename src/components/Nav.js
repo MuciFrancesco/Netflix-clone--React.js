@@ -4,6 +4,8 @@ import netflix from "../assets/netflix-logo.svg";
 import search from "../assets/search-nav.svg";
 import close from "../assets/close.svg";
 import SearchBar from "./SearchBar";
+import arrow_browse from "../assets/arrow-browse.svg";
+import arrow_browse_open from "../assets/arrow-browse-open.svg";
 
 function Nav({
   handleCloseDetails,
@@ -21,6 +23,8 @@ function Nav({
   const [showSearch, setShowSearch] = useState(false);
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
+  const [openBrowse, setOpenBrowse] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
 
   const searchMovie = useCallback(
     async (e) => {
@@ -34,7 +38,7 @@ function Nav({
     },
     [query]
   );
-  console.log(movies);
+
   const changeHandler = useCallback((e) => {
     setQuery(e.target.value);
   }, []);
@@ -53,8 +57,6 @@ function Nav({
     setShowSearch(false);
     document.body.style.overflow = "auto";
   }, []);
-
-  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     function handleResize() {
@@ -81,13 +83,30 @@ function Nav({
             </div>
           ) : (
             <div className="nav-links-dropdown">
-              <button className="dropbtn">Browse</button>
-              <div className="dropdown-content">
-                <Link to="/">Home</Link>
-                <Link to="/series">Tv Series</Link>
-                <Link to="/film">Film</Link>
-                <Link to="/myList">My List</Link>
-              </div>
+              <button className="dropbtn" onClick={() => setOpenBrowse(true)}>
+                {" "}
+                Browse
+                <img
+                  src={openBrowse === true ? arrow_browse_open : arrow_browse}
+                  alt="arrow-browse"
+                />
+              </button>
+              {openBrowse === true ? (
+                <div className="dropdown-content">
+                  <Link to="/" onClick={() => setOpenBrowse(false)}>
+                    Home
+                  </Link>
+                  <Link to="/series" onClick={() => setOpenBrowse(false)}>
+                    Tv Series
+                  </Link>
+                  <Link to="/film" onClick={() => setOpenBrowse(false)}>
+                    Film
+                  </Link>
+                  <Link to="/myList" onClick={() => setOpenBrowse(false)}>
+                    My List
+                  </Link>
+                </div>
+              ) : null}
             </div>
           )}
         </div>

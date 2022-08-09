@@ -127,6 +127,11 @@
         border: none;
         cursor: pointer;
         margin-left: 1rem;
+        img{
+            padding-left: 0.5rem;
+            position: relative;
+            bottom: 1px;
+        }
       }
       .dropdown-content {
         display: none;
