@@ -3016,7 +3016,7 @@
   color: white;
 }
 
-footer {
+.home-footer {
   position: relative;
   width: 100%;
   height: 500px;
@@ -3024,7 +3024,7 @@ footer {
   margin-top: 0rem;
 }
 
-footer img {
+.home-footer img {
   opacity: 0.5;
   width: 100%;
   height: 100%;
@@ -3032,7 +3032,7 @@ footer img {
      object-fit: cover;
 }
 
-footer .footer-info {
+.home-footer .footer-info {
   color: white;
   position: absolute;
   top: 0;
@@ -3055,11 +3055,11 @@ footer .footer-info {
           justify-content: center;
 }
 
-footer .footer-info p {
+.home-footer .footer-info p {
   font-size: 18px;
 }
 
-footer .footer-info .footer-contact {
+.home-footer .footer-info .footer-contact {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3072,7 +3072,7 @@ footer .footer-info .footer-contact {
   gap: 1.5rem;
 }
 
-footer .footer-info .footer-contact a {
+.home-footer .footer-info .footer-contact a {
   color: white;
   text-decoration: underline;
   font-size: 17px;

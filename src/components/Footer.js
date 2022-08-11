@@ -3,7 +3,7 @@ import footerImg from "../assets/footer-img.png";
 
 function Footer() {
   return (
-    <footer className="footer">
+    <footer className="home-footer">
       <img src={footerImg} alt="footer-img" />
       <div className="footer-info">
         <h1>Clone Netflix</h1>
