@@ -76,7 +76,7 @@ function Nav({
           <img className="nav-logo" src={netflix} alt="Netflix-logo" />
           {width >= 700 ? (
             <div className="nav-links">
-              <Link to="/">Home</Link>
+              <Link to="/homePage">Home</Link>
               <Link to="/series">Tv Series</Link>
               <Link to="/film">Film</Link>
               <Link to="/myList">My List</Link>
@@ -93,7 +93,7 @@ function Nav({
               </button>
               {openBrowse === true ? (
                 <div className="dropdown-content">
-                  <Link to="/" onClick={() => setOpenBrowse(false)}>
+                  <Link to="/homePage" onClick={() => setOpenBrowse(false)}>
                     Home
                   </Link>
                   <Link to="/series" onClick={() => setOpenBrowse(false)}>
@@ -144,7 +144,9 @@ function Nav({
               />
             )}
           </button>
-          <button className="login-button">Login</button>
+          <Link to="/">
+            <button className="login-button">Exit</button>
+          </Link>
         </div>
       </div>
       {showSearch === true ? (

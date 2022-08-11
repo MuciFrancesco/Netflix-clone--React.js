@@ -30,16 +30,12 @@ function Row({
 
   const handleMouseOut = useCallback(() => SetIsOvering(-1), []);
 
-  const handleClick = useCallback(
-    (i, movie) => {
-      setOpenDetails(movie);
-      setMoreInfo(i);
-      console.log(moreInfo);
-      window.scroll(0, 0);
-      document.body.style.overflow = "hidden";
-    },
-    [moreInfo]
-  );
+  const handleClick = useCallback((i, movie) => {
+    setOpenDetails(movie);
+    setMoreInfo(i);
+    window.scroll(0, 0);
+    document.body.style.overflow = "hidden";
+  }, []);
 
   const handleCloseDetails = useCallback(() => {
     setMoreInfo(-1);

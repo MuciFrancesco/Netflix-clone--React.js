@@ -7,6 +7,7 @@ import HomeScreen from "./pages/HomeScreen";
 import MovieList from "./pages/MovieList";
 import MyList from "./pages/MyList";
 import TvList from "./pages/TvList";
+import HomePage from "./pages/Home/Home";
 import ScrollToTop from "./components/ScrollToTop";
 import { AnimatePresence } from "framer-motion";
 
@@ -15,6 +16,15 @@ function AppRouter() {
   const [moreInfo, setMoreInfo] = useState(-1);
   const [trailer, setTrailer] = useState(-1);
   const [showTrailer, SetShowTrailer] = useState("");
+  const [login, setLogin] = useState(false);
+
+  const loginchange = useLocation();
+
+  useEffect(() => {}, [loginchange]);
+
+  const handleClickLogin = () => {
+    setLogin(true);
+  };
 
   const addToFavorite = useCallback(
     (item) => {
@@ -33,7 +43,6 @@ function AppRouter() {
     },
     [cart]
   );
-  console.log(cart);
 
   const handleClick = useCallback((i) => {
     setMoreInfo(i);
@@ -48,47 +57,45 @@ function AppRouter() {
 
   const selectedTrailer = useCallback((i) => setTrailer(i), []);
 
-  const videoMovieTrailer = useCallback(
-    async (movieId) => {
-      const pr = await tmdbApi.getVideos(category.movie, movieId);
-      const prova = pr.results.slice(0, 1).map((el) => el.key);
-      SetShowTrailer(prova);
-      console.log(showTrailer);
-    },
-    [showTrailer]
-  );
+  const videoMovieTrailer = useCallback(async (movieId) => {
+    const pr = await tmdbApi.getVideos(category.movie, movieId);
+    const prova = pr.results.slice(0, 1).map((el) => el.key);
+    SetShowTrailer(prova);
+  }, []);
 
-  const videoTvTrailer = useCallback(
-    async (tvId) => {
-      const pr = await tmdbApi.getVideos(category.tv, tvId);
-      const prova = pr.results.slice(0, 1).map((el) => el.key);
-      SetShowTrailer(prova);
-      console.log(showTrailer);
-    },
-    [showTrailer]
-  );
+  const videoTvTrailer = useCallback(async (tvId) => {
+    const pr = await tmdbApi.getVideos(category.tv, tvId);
+    const prova = pr.results.slice(0, 1).map((el) => el.key);
+    SetShowTrailer(prova);
+  }, []);
 
   const location = useLocation();
   return (
     <>
-      <Nav
-        setMoreInfo={setMoreInfo}
-        moreInfo={moreInfo}
-        handleCloseDetails={handleCloseDetails}
-        handleClick={handleClick}
-        trailer={trailer}
-        showTrailer={showTrailer}
-        videoMovieTrailer={videoMovieTrailer}
-        selectedTrailer={selectedTrailer}
-        cart={cart}
-        addToFavorite={addToFavorite}
-        removeToFavorite={removeToFavorite}
-      />
+      {loginchange.pathname === "/" ? null : (
+        <Nav
+          setMoreInfo={setMoreInfo}
+          moreInfo={moreInfo}
+          handleCloseDetails={handleCloseDetails}
+          handleClick={handleClick}
+          trailer={trailer}
+          showTrailer={showTrailer}
+          videoMovieTrailer={videoMovieTrailer}
+          selectedTrailer={selectedTrailer}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          removeToFavorite={removeToFavorite}
+        />
+      )}
       <AnimatePresence>
         <ScrollToTop>
           <Routes location={location} key={location.pathname}>
             <Route
               path="/"
+              element={<HomePage handleClickLogin={handleClickLogin} />}
+            ></Route>
+            <Route
+              path="/homePage"
               element={
                 <HomeScreen
                   removeToFavorite={removeToFavorite}
@@ -151,7 +158,7 @@ function AppRouter() {
           </Routes>
         </ScrollToTop>
       </AnimatePresence>
-      <Footer />
+      {loginchange.pathname === "/" ? null : <Footer />}
     </>
   );
 }
