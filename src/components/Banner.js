@@ -46,7 +46,7 @@ function Banner({
     return str?.length > n ? str.substr(0, n - 1) + "..." : str;
   };
 
-  const [showTrailer, SetShowTrailer] = useState("");
+  const [showTrailer, SetShowTrailers] = useState("");
   const [trailer, setTrailer] = useState(false);
 
   const handlePlayTrailer = async () => {
@@ -55,20 +55,20 @@ function Banner({
     if (upcomingFilmsBanner) {
       request = await tmdbApi.getVideos(category.movie, movie.id);
       response = request.results.slice(0, 1).map((el) => el.key);
-      SetShowTrailer(response);
+      SetShowTrailers(response);
       setTrailer(true);
     } else if (topRatedFilmsBanner) {
       request = await tmdbApi.getVideos(category.movie, movie.id);
       response = request.results.slice(0, 1).map((el) => el.key);
-      SetShowTrailer(response);
+      SetShowTrailers(response);
       setTrailer(true);
     } else if (upcomingTvBanner) {
       request = await tmdbApi.getVideos(category.tv, movie.id);
       response = request.results.slice(0, 1).map((el) => el.key);
-      SetShowTrailer(response);
+      SetShowTrailers(response);
       setTrailer(true);
     } else {
-      SetShowTrailer("");
+      SetShowTrailers("");
       setTrailer(false);
     }
   };
@@ -127,7 +127,7 @@ function Banner({
             <button
               onClick={() => {
                 setTrailer(false);
-                SetShowTrailer("");
+                SetShowTrailers("");
               }}
               className="banner-close-trailer-btn"
             >

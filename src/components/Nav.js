@@ -73,7 +73,11 @@ function Nav({
         style={showSearch ? { background: " #000000f5" } : null}
       >
         <div className="nav-group-1">
-          <img className="nav-logo" src={netflix} alt="Netflix-logo" />
+          <Link to="/homePage">
+            {" "}
+            <img className="nav-logo" src={netflix} alt="Netflix-logo" />
+          </Link>
+
           {width >= 700 ? (
             <div className="nav-links">
               <Link to="/homePage">Home</Link>

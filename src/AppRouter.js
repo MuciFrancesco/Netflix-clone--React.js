@@ -10,6 +10,7 @@ import TvList from "./pages/TvList";
 import HomePage from "./pages/Home/Home";
 import ScrollToTop from "./components/ScrollToTop";
 import { AnimatePresence } from "framer-motion";
+import ProfilesManager from "./pages/ProfilesManager";
 
 function AppRouter() {
   const [cart, setCart] = useState([]);
@@ -52,6 +53,7 @@ function AppRouter() {
 
   const handleCloseDetails = useCallback(() => {
     setMoreInfo(-1);
+    SetShowTrailer("");
     document.body.style.overflow = "auto";
   }, []);
 
@@ -72,7 +74,8 @@ function AppRouter() {
   const location = useLocation();
   return (
     <>
-      {loginchange.pathname === "/" ? null : (
+      {loginchange.pathname === "/" ||
+      location.pathname === "/profiles" ? null : (
         <Nav
           setMoreInfo={setMoreInfo}
           moreInfo={moreInfo}
@@ -94,6 +97,7 @@ function AppRouter() {
               path="/"
               element={<HomePage handleClickLogin={handleClickLogin} />}
             ></Route>
+            <Route path="/profiles" element={<ProfilesManager />} />
             <Route
               path="/homePage"
               element={
@@ -158,7 +162,10 @@ function AppRouter() {
           </Routes>
         </ScrollToTop>
       </AnimatePresence>
-      {loginchange.pathname === "/" ? null : <Footer />}
+      {loginchange.pathname === "/" ||
+      location.pathname === "/profiles" ? null : (
+        <Footer />
+      )}
     </>
   );
 }

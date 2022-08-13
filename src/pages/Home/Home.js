@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import imgBanner from "../../assets/footer-img.png";
 import netflixLogo from "../../assets/netflix-logo.svg";
+import { motion } from "framer-motion";
 function Home({ handleClickLogin }) {
+  const [showP, setShohP] = useState({
+    a: false,
+    b: false,
+    c: false,
+    d: false,
+    e: false,
+    f: false,
+  });
+
   return (
     <>
-      <div className="body">
+      <motion.div
+        className="body"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
         <header>
           <nav>
             <div className="header">
@@ -35,7 +50,7 @@ function Home({ handleClickLogin }) {
                 </div>
                 <div className="menu-btn">
                   <button onClick={handleClickLogin}>
-                    <Link to="/homePage" className="menu-btn-a">
+                    <Link to="/profiles" className="menu-btn-a">
                       {" "}
                       Accedi
                     </Link>
@@ -205,7 +220,15 @@ function Home({ handleClickLogin }) {
                   <div className="content-format-ask-list">
                     <ul>
                       <li>
-                        <button>
+                        <button
+                          onClick={() =>
+                            setShohP(
+                              showP.a === false
+                                ? { ...showP, a: true }
+                                : { ...showP, a: false }
+                            )
+                          }
+                        >
                           Cos'è Netflix?
                           <svg
                             className="svg-1"
@@ -215,22 +238,35 @@ function Home({ handleClickLogin }) {
                             <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
                           </svg>
                         </button>
-                        <p hidden>
-                          Netflix è un servizio di streaming che offre una
-                          varietà di serie TV, film, documentari pluripremiati e
-                          tanto altro su una vasta gamma di dispositivi connessi
-                          a Internet.
-                        </p>
-                        <p hidden>
-                          Guarda quello che vuoi, in qualsiasi momento e senza
-                          interruzioni pubblicitarie. Il tutto a una quota
-                          mensile ridotta. C'è sempre qualcosa di nuovo da
-                          scoprire: aggiungiamo nuovi film e serie TV ogni
-                          settimana!
-                        </p>
+                        {showP.a === true ? (
+                          <>
+                            {" "}
+                            <p>
+                              Netflix è un servizio di streaming che offre una
+                              varietà di serie TV, film, documentari
+                              pluripremiati e tanto altro su una vasta gamma di
+                              dispositivi connessi a Internet.
+                            </p>
+                            <p>
+                              Guarda quello che vuoi, in qualsiasi momento e
+                              senza interruzioni pubblicitarie. Il tutto a una
+                              quota mensile ridotta. C'è sempre qualcosa di
+                              nuovo da scoprire: aggiungiamo nuovi film e serie
+                              TV ogni settimana!
+                            </p>
+                          </>
+                        ) : null}
                       </li>
                       <li>
-                        <button>
+                        <button
+                          onClick={() =>
+                            setShohP(
+                              showP.b === false
+                                ? { ...showP, b: true }
+                                : { ...showP, b: false }
+                            )
+                          }
+                        >
                           Quanto costa Netflix?
                           <svg
                             className="svg-2"
@@ -240,15 +276,25 @@ function Home({ handleClickLogin }) {
                             <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
                           </svg>
                         </button>
-                        <p hidden>
-                          Guarda Netflix su smartphone, tablet, Smart TV, laptop
-                          o dispositivi per lo streaming, il tutto per un
-                          importo mensile fisso. Piani da 7,99 € a 17,99 € al
-                          mese. Nessun costo aggiuntivo, nessun contratto.
-                        </p>
+                        {showP.b === true ? (
+                          <p>
+                            Guarda Netflix su smartphone, tablet, Smart TV,
+                            laptop o dispositivi per lo streaming, il tutto per
+                            un importo mensile fisso. Piani da 7,99 € a 17,99 €
+                            al mese. Nessun costo aggiuntivo, nessun contratto.
+                          </p>
+                        ) : null}
                       </li>
                       <li>
-                        <button>
+                        <button
+                          onClick={() =>
+                            setShohP(
+                              showP.c === false
+                                ? { ...showP, c: true }
+                                : { ...showP, c: false }
+                            )
+                          }
+                        >
                           Dove posso guardare Netflix?
                           <svg
                             className="svg-3"
@@ -258,24 +304,37 @@ function Home({ handleClickLogin }) {
                             <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
                           </svg>
                         </button>
-                        <p hidden>
-                          Guarda Netflix dove vuoi, quando vuoi. Accedi al tuo
-                          account per guardare subito Netflix dal tuo computer
-                          su netflix.com oppure da qualsiasi dispositivo
-                          connesso a Internet che supporta l'app Netflix, come
-                          smart TV, smartphone, tablet, lettori multimediali per
-                          streaming e console per videogiochi.
-                        </p>
-                        <p hidden>
-                          Con l'app per iOS, Android e Windows 10 puoi anche
-                          scaricare i tuoi programmi preferiti. Usa la
-                          funzionalità di download per guardare i contenuti
-                          mentre sei in viaggio e senza connessione a Internet.
-                          Porta Netflix sempre con te.
-                        </p>
+                        {showP.c === true ? (
+                          <>
+                            <p>
+                              Guarda Netflix dove vuoi, quando vuoi. Accedi al
+                              tuo account per guardare subito Netflix dal tuo
+                              computer su netflix.com oppure da qualsiasi
+                              dispositivo connesso a Internet che supporta l'app
+                              Netflix, come smart TV, smartphone, tablet,
+                              lettori multimediali per streaming e console per
+                              videogiochi.
+                            </p>
+                            <p>
+                              Con l'app per iOS, Android e Windows 10 puoi anche
+                              scaricare i tuoi programmi preferiti. Usa la
+                              funzionalità di download per guardare i contenuti
+                              mentre sei in viaggio e senza connessione a
+                              Internet. Porta Netflix sempre con te.
+                            </p>
+                          </>
+                        ) : null}
                       </li>
                       <li>
-                        <button>
+                        <button
+                          onClick={() =>
+                            setShohP(
+                              showP.d === false
+                                ? { ...showP, d: true }
+                                : { ...showP, d: false }
+                            )
+                          }
+                        >
                           Come posso disdire?
                           <svg
                             className="svg-4"
@@ -285,15 +344,26 @@ function Home({ handleClickLogin }) {
                             <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
                           </svg>
                         </button>
-                        <p hidden>
-                          Netflix è flessibile. Nessun contratto fastidioso e
-                          nessun impegno. Puoi facilmente disdire il tuo
-                          contratto online con due clic. Nessuna penale: attiva
-                          o disdici il tuo account in qualsiasi momento.
-                        </p>
+                        {showP.d === true ? (
+                          <p>
+                            Netflix è flessibile. Nessun contratto fastidioso e
+                            nessun impegno. Puoi facilmente disdire il tuo
+                            contratto online con due clic. Nessuna penale:
+                            attiva o disdici il tuo account in qualsiasi
+                            momento.
+                          </p>
+                        ) : null}
                       </li>
                       <li>
-                        <button>
+                        <button
+                          onClick={() =>
+                            setShohP(
+                              showP.e === false
+                                ? { ...showP, e: true }
+                                : { ...showP, e: false }
+                            )
+                          }
+                        >
                           Cosa posso guardare su Netflix?
                           <svg
                             className="svg-5"
@@ -303,15 +373,25 @@ function Home({ handleClickLogin }) {
                             <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
                           </svg>
                         </button>
-                        <p hidden>
-                          Netflix ha un nutrito catalogo di lungometraggi,
-                          documentari, serie TV, anime, originali Netflix
-                          pluripremiati e tanto altro. Guarda tutto quello che
-                          vuoi, in qualsiasi momento.
-                        </p>
+                        {showP.e === true ? (
+                          <p>
+                            Netflix ha un nutrito catalogo di lungometraggi,
+                            documentari, serie TV, anime, originali Netflix
+                            pluripremiati e tanto altro. Guarda tutto quello che
+                            vuoi, in qualsiasi momento.
+                          </p>
+                        ) : null}
                       </li>
                       <li>
-                        <button>
+                        <button
+                          onClick={() =>
+                            setShohP(
+                              showP.f === false
+                                ? { ...showP, f: true }
+                                : { ...showP, f: false }
+                            )
+                          }
+                        >
                           Netflix è adatto ai bambini?
                           <svg
                             className="svg-6"
@@ -321,18 +401,23 @@ function Home({ handleClickLogin }) {
                             <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
                           </svg>
                         </button>
-                        <p hidden>
-                          L'area Netflix Bambini, già inclusa nell'abbonamento,
-                          offre ai genitori un maggiore controllo sui contenuti
-                          e ai più piccoli uno spazio dedicato dove guardare
-                          serie TV e film per tutta la famiglia.
-                        </p>
-                        <p hidden>
-                          I profili Bambini hanno un filtro famiglia con PIN che
-                          ti permette di limitare l'accesso ai contenuti in base
-                          alla fascia d'età e bloccare la visione di titoli
-                          specifici.
-                        </p>
+                        {showP.f === true ? (
+                          <>
+                            <p>
+                              L'area Netflix Bambini, già inclusa
+                              nell'abbonamento, offre ai genitori un maggiore
+                              controllo sui contenuti e ai più piccoli uno
+                              spazio dedicato dove guardare serie TV e film per
+                              tutta la famiglia.
+                            </p>
+                            <p>
+                              I profili Bambini hanno un filtro famiglia con PIN
+                              che ti permette di limitare l'accesso ai contenuti
+                              in base alla fascia d'età e bloccare la visione di
+                              titoli specifici.
+                            </p>
+                          </>
+                        ) : null}
                       </li>
                     </ul>
                   </div>
@@ -449,7 +534,7 @@ function Home({ handleClickLogin }) {
             <p>Netflix Italia</p>
           </div>
         </footer>
-      </div>
+      </motion.div>
     </>
   );
 }
