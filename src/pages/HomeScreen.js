@@ -4,6 +4,7 @@ import Row from "../components/Row";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { motion } from "framer-motion";
 import { fetchHomeScreen } from "../API/APIcall/ApiHomeScreen";
+import Loading from "../components/Loading";
 
 //hero block
 
@@ -32,171 +33,181 @@ function HomeScreen({
 
   useEffect(() => {
     setStatus("pending");
-    fetchHomeScreen().then((res) => {
-      setPopular(res.populars.results);
-      SetTopRated(res.topRateds.results);
-      setUpcoming(res.upcomings.results);
-      setActionMovie(res.actionMovies.data.results);
-      setTvPopular(res.tvPopulars.results);
-      setTvTopRated(res.tvTopRateds.results);
-      setTvOnAir(res.tvOnAirs.results);
-      setTvComedy(res.tvComedys.data.results);
-    });
-    setStatus("resolved");
+    fetchHomeScreen()
+      .then((res) => {
+        setPopular(res.populars.results);
+        SetTopRated(res.topRateds.results);
+        setUpcoming(res.upcomings.results);
+        setActionMovie(res.actionMovies.data.results);
+        setTvPopular(res.tvPopulars.results);
+        setTvTopRated(res.tvTopRateds.results);
+        setTvOnAir(res.tvOnAirs.results);
+        setTvComedy(res.tvComedys.data.results);
+      })
+      .then(setStatus("resolved"));
   }, []);
 
   return (
-    <motion.div
-      className="App"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <Banner
-        cart={cart}
-        addToFavorite={addToFavorite}
-        removeToFavorite={removeToFavorite}
-        topRatedFilmsBanner
-      />
-      <Row
-        status={status}
-        title="Netflix Original"
-        movie={popular}
-        isLargeRow
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        showTrailer={showTrailer}
-        removeToFavorite={removeToFavorite}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      ,
-      <Row
-        status={status}
-        title="Trending Now"
-        movie={topRated}
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        showTrailer={showTrailer}
-        removeToFavorite={removeToFavorite}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      ,
-      <Row
-        status={status}
-        title="Top Rated Movie"
-        movie={upcoming}
-        isLargeRow
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        showTrailer={showTrailer}
-        removeToFavorite={removeToFavorite}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      <Row
-        status={status}
-        isSeries
-        title="Top rated Series"
-        movie={tvTopRated}
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        showTrailer={showTrailer}
-        removeToFavorite={removeToFavorite}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      <Row
-        status={status}
-        title="Action Movie"
-        movie={actionMovie}
-        isLargeRow
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        showTrailer={showTrailer}
-        removeToFavorite={removeToFavorite}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      <Row
-        status={status}
-        isSeries
-        title="Popular Series"
-        movie={tvPopular}
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        showTrailer={showTrailer}
-        removeToFavorite={removeToFavorite}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      <Row
-        status={status}
-        isSeries
-        title="Series on air"
-        movie={tvOnAir}
-        isLargeRow
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        showTrailer={showTrailer}
-        removeToFavorite={removeToFavorite}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      <Row
-        status={status}
-        isSeries
-        title="Comedy Tv"
-        movie={tvComedy}
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        showTrailer={showTrailer}
-        removeToFavorite={removeToFavorite}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-    </motion.div>
+    <>
+      <motion.div
+        className="App"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Banner
+          cart={cart}
+          addToFavorite={addToFavorite}
+          removeToFavorite={removeToFavorite}
+          topRatedFilmsBanner
+        />
+        ,
+        <Row
+          status={status}
+          title="Netflix Original"
+          movie={popular}
+          isLargeRow
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          showTrailer={showTrailer}
+          removeToFavorite={removeToFavorite}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        ,
+        <Row
+          status={status}
+          title="Trending Now"
+          movie={topRated}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          showTrailer={showTrailer}
+          removeToFavorite={removeToFavorite}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        ,
+        <Row
+          status={status}
+          title="Top Rated Movie"
+          movie={upcoming}
+          isLargeRow
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          showTrailer={showTrailer}
+          removeToFavorite={removeToFavorite}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        ,
+        <Row
+          status={status}
+          isSeries
+          title="Top rated Series"
+          movie={tvTopRated}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          showTrailer={showTrailer}
+          removeToFavorite={removeToFavorite}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        ,
+        <Row
+          status={status}
+          title="Action Movie"
+          movie={actionMovie}
+          isLargeRow
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          showTrailer={showTrailer}
+          removeToFavorite={removeToFavorite}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        ,
+        <Row
+          status={status}
+          isSeries
+          title="Popular Series"
+          movie={tvPopular}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          showTrailer={showTrailer}
+          removeToFavorite={removeToFavorite}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        ,
+        <Row
+          status={status}
+          isSeries
+          title="Series on air"
+          movie={tvOnAir}
+          isLargeRow
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          showTrailer={showTrailer}
+          removeToFavorite={removeToFavorite}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        ,
+        <Row
+          status={status}
+          isSeries
+          title="Comedy Tv"
+          movie={tvComedy}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          showTrailer={showTrailer}
+          removeToFavorite={removeToFavorite}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        ,
+      </motion.div>
+    </>
   );
 }
 

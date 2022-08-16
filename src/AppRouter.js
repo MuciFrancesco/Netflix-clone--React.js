@@ -11,6 +11,7 @@ import HomePage from "./pages/Home/Home";
 import ScrollToTop from "./components/ScrollToTop";
 import { AnimatePresence } from "framer-motion";
 import ProfilesManager from "./pages/ProfilesManager";
+import Loading from "./components/Loading";
 
 function AppRouter() {
   const [cart, setCart] = useState([]);
@@ -18,10 +19,23 @@ function AppRouter() {
   const [trailer, setTrailer] = useState(-1);
   const [showTrailer, SetShowTrailer] = useState("");
   const [login, setLogin] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const loginchange = useLocation();
+  const location = useLocation();
 
-  useEffect(() => {}, [loginchange]);
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setLoading(true);
+    } else {
+      document.body.style.overflow = "hidden";
+      setTimeout(() => {
+        setLoading(false);
+        document.body.style.overflow = "auto";
+      }, 2500);
+    }
+  }, [location.pathname]);
+
+  useEffect(() => {}, [location]);
 
   const handleClickLogin = () => {
     setLogin(true);
@@ -71,11 +85,12 @@ function AppRouter() {
     SetShowTrailer(prova);
   }, []);
 
-  const location = useLocation();
   return (
     <>
-      {loginchange.pathname === "/" ||
-      location.pathname === "/profiles" ? null : (
+      {location.pathname === "/" ||
+      location.pathname === "/profiles" ? null : loading === true ? (
+        <Loading />
+      ) : (
         <Nav
           setMoreInfo={setMoreInfo}
           moreInfo={moreInfo}
@@ -162,8 +177,7 @@ function AppRouter() {
           </Routes>
         </ScrollToTop>
       </AnimatePresence>
-      {loginchange.pathname === "/" ||
-      location.pathname === "/profiles" ? null : (
+      {location.pathname === "/" || location.pathname === "/profiles" ? null : (
         <Footer />
       )}
     </>

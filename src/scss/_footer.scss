@@ -45,6 +45,13 @@
         gap: 1rem;
         flex-direction: column;
     }
+    .home-footer .footer-info .footer-contact {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-direction: column;
+    }
 }
 
 @media only screen and (max-width:450px){

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import netflix from "../assets/netflix-logo.svg";
-import search from "../assets/search-nav.svg";
+import search from "../assets/search.svg";
 import close from "../assets/close.svg";
 import SearchBar from "./SearchBar";
 import arrow_browse from "../assets/arrow-browse.svg";

@@ -13,7 +13,6 @@ function Banner({
   topRatedFilmsBanner,
 }) {
   const [movie, setMovie] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async function fetchData() {
@@ -74,69 +73,72 @@ function Banner({
   };
 
   return (
-    <header
-      className="banner"
-      style={{
-        backgroundSize: "cover",
-        backgroundImage: `url(${apiConfig.originalImage(
-          movie?.backdrop_path
-        )})`,
-        backgroundPosition: "center center",
-      }}
-    >
-      {!trailer ? (
-        <>
-          {" "}
-          <div className="banner-contents">
-            <h1 className="banner-title">
-              {movie?.title || movie?.name || movie?.original_name}
-            </h1>
-            <div className="banner-buttons">
-              <button className="banner-button" onClick={handlePlayTrailer}>
-                Play
-              </button>
+    <>
+      <header
+        className="banner"
+        style={{
+          backgroundSize: "cover",
+          backgroundImage: `url(${apiConfig.originalImage(
+            movie?.backdrop_path
+          )})`,
+          backgroundPosition: "center center",
+        }}
+      >
+        {!trailer ? (
+          <>
+            {" "}
+            <div className="banner-contents">
+              <h1 className="banner-title">
+                {movie?.title || movie?.name || movie?.original_name}
+              </h1>
+              <div className="banner-buttons">
+                <button className="banner-button" onClick={handlePlayTrailer}>
+                  Play
+                </button>
+                <button
+                  className="banner-button"
+                  onClick={
+                    cart.find((movies) => movies.id === movie.id)
+                      ? () => removeToFavorite(movie)
+                      : () => addToFavorite(movie)
+                  }
+                >
+                  {cart.find((movies) => movies.id === movie.id)
+                    ? "Already on the list"
+                    : "Add into My List"}
+                </button>
+              </div>
+              <h1 className="bunner-description">
+                {truncate(movie?.overview, 150)}
+              </h1>
+            </div>
+            <div className="banner-fade-button" />
+            <div className="banner-bg" />
+          </>
+        ) : (
+          <>
+            <ReactPlayer
+              width={"100vw"}
+              height={"100%"}
+              playing={true}
+              url={`https://www.youtube.com/watch?v=${showTrailer}&SameSite=Strict&Secure`}
+            />
+            <div className="banner-close-btn">
               <button
-                className="banner-button"
-                onClick={
-                  cart.find((movies) => movies.id === movie.id)
-                    ? () => removeToFavorite(movie)
-                    : () => addToFavorite(movie)
-                }
+                onClick={() => {
+                  setTrailer(false);
+                  SetShowTrailers("");
+                }}
+                className="banner-close-trailer-btn"
               >
-                {cart.find((movies) => movies.id === movie.id)
-                  ? "Already on the list"
-                  : "Add into My List"}
+                Close
               </button>
             </div>
-            <h1 className="bunner-description">
-              {truncate(movie?.overview, 150)}
-            </h1>
-          </div>
-          <div className="banner-fade-button" />
-          <div className="banner-bg" />
-        </>
-      ) : (
-        <>
-          <ReactPlayer
-            width={"100vw"}
-            height={"100%"}
-            playing={true}
-            url={`https://www.youtube.com/watch?v=${showTrailer}&SameSite=Strict&Secure`}
-          />
-          <div className="banner-close-btn">
-            <button
-              onClick={() => {
-                setTrailer(false);
-                SetShowTrailers("");
-              }}
-              className="banner-close-trailer-btn"
-            >
-              Close
-            </button>
-          </div>
-        </>
-      )}
-    </header>
+          </>
+        )}
+      </header>
+      )
+    </>
   );
 }
 

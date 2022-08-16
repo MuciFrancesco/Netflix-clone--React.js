@@ -23,6 +23,7 @@ function MovieList({
   const [horrorMovie, setHorrorMovie] = useState([]);
   const [romanceMovie, SetRomanceMovie] = useState([]);
   const [status, setStatus] = useState("idle");
+
   useEffect(() => {
     setStatus("pending");
     fetchFilmList().then((res) => {
@@ -37,121 +38,123 @@ function MovieList({
     setStatus("resolved");
   }, []);
   return (
-    <motion.div
-      className="movie-list"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      <Banner
-        upcomingFilmsBanner
-        cart={cart}
-        addToFavorite={addToFavorite}
-        removeToFavorite={removeToFavorite}
-      />
-      <Row
-        status={status}
-        isLargeRow
-        movie={popular}
-        title="Popular Films"
-        removeToFavorite={removeToFavorite}
-        showTrailer={showTrailer}
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      <Row
-        status={status}
-        isLargeRow
-        movie={topRated}
-        title="Top rated Films"
-        removeToFavorite={removeToFavorite}
-        showTrailer={showTrailer}
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      <Row
-        status={status}
-        isLargeRow
-        movie={upcoming}
-        title="Upcoming Films"
-        removeToFavorite={removeToFavorite}
-        showTrailer={showTrailer}
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      <Row
-        status={status}
-        isLargeRow
-        movie={actionMovie}
-        title="Action Films"
-        removeToFavorite={removeToFavorite}
-        showTrailer={showTrailer}
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      <Row
-        status={status}
-        isLargeRow
-        movie={horrorMovie}
-        title="Horror Films"
-        removeToFavorite={removeToFavorite}
-        showTrailer={showTrailer}
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-      <Row
-        status={status}
-        isLargeRow
-        movie={romanceMovie}
-        title="Romance Films"
-        removeToFavorite={removeToFavorite}
-        showTrailer={showTrailer}
-        cart={cart}
-        addToFavorite={addToFavorite}
-        moreInfo={moreInfo}
-        handleClick={handleClick}
-        handleCloseDetails={handleCloseDetails}
-        trailer={trailer}
-        selectedTrailer={selectedTrailer}
-        videoMovieTrailer={videoMovieTrailer}
-        videoTvTrailer={videoTvTrailer}
-      />
-    </motion.div>
+    <>
+      <motion.div
+        className="movie-list"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <Banner
+          upcomingFilmsBanner
+          cart={cart}
+          addToFavorite={addToFavorite}
+          removeToFavorite={removeToFavorite}
+        />
+        <Row
+          status={status}
+          isLargeRow
+          movie={popular}
+          title="Popular Films"
+          removeToFavorite={removeToFavorite}
+          showTrailer={showTrailer}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        <Row
+          status={status}
+          isLargeRow
+          movie={topRated}
+          title="Top rated Films"
+          removeToFavorite={removeToFavorite}
+          showTrailer={showTrailer}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        <Row
+          status={status}
+          isLargeRow
+          movie={upcoming}
+          title="Upcoming Films"
+          removeToFavorite={removeToFavorite}
+          showTrailer={showTrailer}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        <Row
+          status={status}
+          isLargeRow
+          movie={actionMovie}
+          title="Action Films"
+          removeToFavorite={removeToFavorite}
+          showTrailer={showTrailer}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        <Row
+          status={status}
+          isLargeRow
+          movie={horrorMovie}
+          title="Horror Films"
+          removeToFavorite={removeToFavorite}
+          showTrailer={showTrailer}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+        <Row
+          status={status}
+          isLargeRow
+          movie={romanceMovie}
+          title="Romance Films"
+          removeToFavorite={removeToFavorite}
+          showTrailer={showTrailer}
+          cart={cart}
+          addToFavorite={addToFavorite}
+          moreInfo={moreInfo}
+          handleClick={handleClick}
+          handleCloseDetails={handleCloseDetails}
+          trailer={trailer}
+          selectedTrailer={selectedTrailer}
+          videoMovieTrailer={videoMovieTrailer}
+          videoTvTrailer={videoTvTrailer}
+        />
+      </motion.div>
+    </>
   );
 }
 
