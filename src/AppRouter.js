@@ -32,6 +32,7 @@ function AppRouter() {
         setLoading(false);
         document.body.style.overflow = "auto";
       }, 2500);
+      clearTimeout();
     }
   }, [location.pathname]);
 
