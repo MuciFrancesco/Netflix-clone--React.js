@@ -112,12 +112,18 @@
     .my-list-container .my-list .my-list-description {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1rem;
         justify-content: center;
         align-items: center;
     }
+    .my-list-container .my-list .my-list-description p {
+        font-size: 15.5px;
+    }
     .my-list-container .my-list {
         flex-direction: column;
+    }
+    .my-list-container .my-list .my-list-img img {
+        width: 180px;
     }
 
 }

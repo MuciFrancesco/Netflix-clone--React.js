@@ -457,12 +457,27 @@ color: #fff;
 
 
 .content-format-ask-list li{
-    list-style: none;
-    margin: 0 0 8px;
-    font-size:  1.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.625rem;
+    flex-direction: column;
+    width: 100%;
+    background: #161616;
+    transition: 1s ease;
+    margin-top: 0.3rem;
 
 }
 
+.content-format-ask-list li p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 804px;
+    transition: ease-in-out 1s;
+    padding: 1rem;
+}
 
 .content-format-ask-list button{
     display: flex;
@@ -724,7 +739,33 @@ font-size: 13px;
         padding: 23.5px 0px;
     }
     
+    .content-format-ask-list button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #fff;
+        text-align: left;
+        background: #303030;
+        padding: 0.8em 2.2em 0.8em 1.2em;
+        margin-bottom: 1px;
+        font-weight: 400;
+        position: relative;
+        width: 100%;
+        text-align: left;
+        border: 0;
+        height: 74px;
+        font-size: 27px;
+    }
 
+    .content-format-ask-list li p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        transition: ease-in-out 1s;
+        padding: 1rem;
+    }
     
     
     
@@ -1197,6 +1238,8 @@ font-size: 13px;
     .content-format-img2{
         width: 100%;
         display: flex;
+        align-items: center;
+        justify-content: center;
         flex: 0 1 auto;
         position: relative;
         top: 105px;
@@ -1211,21 +1254,22 @@ font-size: 13px;
     }
     
     .content-format-img2-1{
-        position: absolute;
-        left: 48.5%;
-        bottom: 14%;
-        transform: translateX(-50%);
-        margin: 0 auto;
-        background: #000;
-        display: flex;
-        align-items: center;
-        width: 22%;
-        height: 13%;
-        min-width: 15em;
-        padding: 0.25em 0.65em;
-        border: 2px solid rgba(255,255,255,.25);
-        box-shadow: 0 0 2em 0 #000;
-        border-radius: 10px;
+
+            position: absolute;
+            left: 49.5%;
+            top: 79%;
+            transform: translateX(-50%);
+            margin: 0 auto;
+            background: #000;
+            display: flex;
+            align-items: center;
+            width: 45%;
+            height: 23%;
+            min-width: 15em;
+            padding: 0.25em 0.65em;
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 2em 0 #000;
+            border-radius: 10px;
     }
 
     .content-format-img2-1-div img{
@@ -1405,12 +1449,49 @@ font-size: 13px;
         width: 92px;
         margin-bottom: 10px;
     }
+    .svg-1, .svg-2, .svg-3, .svg-4, .svg-5, .svg-6 {
+        width: 22px;
+        height: 22px;
+        position: relative;
+        fill: white;
+    }
+    .content-format-ask-list button {
+        font-size: 20px;
+    }
+    .content-format-ask-list li p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        transition: ease-in-out 1s;
+        padding: 1rem;
+        font-size: 17px;
+    }
 }
 
 @media only screen and (max-width: 450px){
 footer {
      height: auto !important; 
 }
+.content-format-ask-list button {
+    font-size: 14px;
+}
+.svg-1, .svg-2, .svg-3, .svg-4, .svg-5, .svg-6 {
+    width: 20px;
+    height: 20px;
+}
+.content-format-ask-list li p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    transition: ease-in-out 1s;
+    padding: 1rem;
+    font-size: 15px;
+}
+
 }
 
 
