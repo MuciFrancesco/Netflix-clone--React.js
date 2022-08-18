@@ -107,6 +107,9 @@
         font-size: 14px;
 
     }
+    .nav .nav-group-2 input {
+        font-size: 14px;
+    }
 }
 
 @media only screen and (max-width:700px){
@@ -172,6 +175,7 @@
     .nav .nav-group-2 input {
         width: 125px;
         height: 18px;
+        left: 10px;
         &::placeholder{
             font-size: 12px;
         }
@@ -216,13 +220,13 @@
         justify-content: center;
         width: 80%;
         top: 50px;
-        left: 0px;
+        left: 10px;
     }    
     .nav .nav-group-2 .search-button .close {
         padding-right: 0rem;
         position: absolute;
         top: 54px;
-        right: 43px;
+        right: 30px;
     }
 }
 @media only screen and (max-width:425px){
@@ -239,12 +243,31 @@
         justify-content: center;
         width: 80%;
         top: 50px;
-        left: 0px;
+        left: 7px;
     }    
     .nav .nav-group-2 .search-button .close {
         padding-right: 0rem;
         position: absolute;
         top: 54px;
-        right: 31px;
+        right: 25px;
+    }
+}
+
+@media only screen and (max-width:300px){
+    .nav .nav-group-2 input {
+        height: 26px;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        top: 50px;
+        left: 7px;
+    }    
+    .nav .nav-group-2 .search-button .close {
+        padding-right: 0rem;
+        position: absolute;
+        top: 54px;
+        right: 20px;
     }
 }

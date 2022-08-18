@@ -2745,7 +2745,7 @@
 
 @media only screen and (max-width: 425px) {
   .banner {
-    height: 440px;
+    height: 436px;
   }
   .banner .banner-fade-button {
     height: 56.8%;
@@ -2935,6 +2935,9 @@
     font-weight: 600;
     font-size: 14px;
   }
+  .nav .nav-group-2 input {
+    font-size: 14px;
+  }
 }
 
 @media only screen and (max-width: 700px) {
@@ -3002,6 +3005,7 @@
   .nav .nav-group-2 input {
     width: 125px;
     height: 18px;
+    left: 10px;
   }
   .nav .nav-group-2 input::-webkit-input-placeholder {
     font-size: 12px;
@@ -3063,13 +3067,13 @@
             justify-content: center;
     width: 80%;
     top: 50px;
-    left: 0px;
+    left: 10px;
   }
   .nav .nav-group-2 .search-button .close {
     padding-right: 0rem;
     position: absolute;
     top: 54px;
-    right: 43px;
+    right: 30px;
   }
 }
 
@@ -3094,13 +3098,38 @@
             justify-content: center;
     width: 80%;
     top: 50px;
-    left: 0px;
+    left: 7px;
   }
   .nav .nav-group-2 .search-button .close {
     padding-right: 0rem;
     position: absolute;
     top: 54px;
-    right: 31px;
+    right: 25px;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .nav .nav-group-2 input {
+    height: 26px;
+    position: absolute;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 80%;
+    top: 50px;
+    left: 7px;
+  }
+  .nav .nav-group-2 .search-button .close {
+    padding-right: 0rem;
+    position: absolute;
+    top: 54px;
+    right: 20px;
   }
 }
 
@@ -3272,6 +3301,9 @@
   }
   .my-list-container .my-list .my-list-img img {
     width: 180px;
+  }
+  .alert-list {
+    font-size: 24px;
   }
 }
 
