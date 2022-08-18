@@ -13,6 +13,7 @@ function SearchBar({
   removeToFavorite,
   videoMovieTrailer,
 }) {
+  // eslint-disable-next-line no-unused-vars
   const [isHovering, SetIsOvering] = useState(-1);
   const [openDetails, setOpenDetails] = useState(false);
   const [moreInfo, setMoreInfo] = useState(-1);

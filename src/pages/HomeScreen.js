@@ -1,10 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import Row from "../components/Row";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { motion } from "framer-motion";
 import { fetchHomeScreen } from "../API/APIcall/ApiHomeScreen";
-import Loading from "../components/Loading";
 
 //hero block
 
